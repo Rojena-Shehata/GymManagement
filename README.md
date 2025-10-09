@@ -1,47 +1,79 @@
 # 🏋️‍♂️ Gym Management System (MVC, N-Tier Architecture)
 
-A web-based application built using **ASP.NET MVC** that helps manage gym members, trainers, subscriptions, and payments efficiently.  
-The project follows a **3-Tier (N-Tier) architecture** for better separation of concerns and maintainability.
+## 📖 Description
+A web-based application for managing gym operations including **member management**, **trainer scheduling**, **session booking**, and **membership plans**.  
+The system is built with **ASP.NET Core MVC**, uses **Entity Framework Core** for data access, and stores data in a **SQL Server** database.
 
 ---
 
-## 🏗️ Architecture Overview
+## 🎯 Goals
+- Centralize **Members** and **Plans** management  
+- Manage **Trainers** and **Session schedules**  
+- Improve **data consistency** and **workflow automation**  
+- Provide a scalable and maintainable architecture using **N-Tier design**
 
-### 🔹 N-Tier Architecture
-The system is divided into three main layers:
+---
 
-1. **Presentation Layer (MVC Project)**
-   - Built using **ASP.NET MVC** and **Razor Views**
-   - Handles user interaction (UI)
-   - Sends user input to the Business Layer
+## 🏗️ High-Level Architecture (Three-Layer Architecture)
 
-2. **Business Logic Layer (Class Library)**
-   - Contains all business rules and validation logic
-   - Acts as a bridge between Presentation and Data layers
-   - Ensures data consistency and workflow logic
+### 🔹 Presentation Layer
+- **ASP.NET MVC Controllers** and **Razor Views**
+- Handles all user interactions
+- Uses **Bootstrap** and **Custom CSS** for responsive UI
 
-3. **Data Access Layer (Class Library)**
-   - Uses **Entity Framework Core** to interact with the database
-   - Handles CRUD operations with SQL Server
-   - Provides repository methods used by the Business Layer
+### 🔹 Business Logic Layer
+- Contains **Service classes** such as `TrainerService`, `SessionService`, etc.
+- Enforces core business rules and validation
+- Acts as a bridge between UI and Data Access layers
+
+### 🔹 Data Access Layer
+- Implements **Repository Pattern** wrapping **Entity Framework Core DbContext**
+- Provides CRUD operations and query abstraction
+- Uses **Unit of Work** to coordinate multiple repositories within a single transaction
+
+---
+
+## ⚙️ Technology Stack
+
+| Category | Technology |
+|-----------|-------------|
+| **Backend** | ASP.NET Core MVC |
+| **ORM** | Entity Framework Core |
+| **Database** | Microsoft SQL Server |
+| **Frontend** | Razor Views, Bootstrap, Custom CSS |
+| **Patterns** | Repository Pattern, Unit of Work, Dependency Injection |
+| **Libraries & Tools** | AutoMapper → For object-to-object mapping between ViewModels and Entities |
 
 ---
 
 ## 🎨 Design Patterns Used
 
 ### 🧱 Repository Pattern
-Provides abstraction between the business logic and data access layers for easier maintenance and testing.
+Provides abstraction between business logic and data access layers for easier maintenance and testing.
+
+### 🧩 Unit of Work Pattern
+Coordinates the work of multiple repositories by managing a **single database context**.  
+Ensures all related operations succeed or fail together, improving **data integrity** and **transaction management**.
 
 ### 💉 Dependency Injection (DI)
-Improves modularity and testability by injecting dependencies like repositories and services instead of hardcoding them.
+Enhances modularity and testability by injecting dependencies like repositories and services instead of hardcoding them.
 
 ---
 
 ## 🧠 Technologies Used
 - **C#**
-- **ASP.NET MVC**
+- **ASP.NET Core MVC**
 - **Entity Framework Core**
 - **SQL Server**
 - **Bootstrap / HTML / CSS**
+
+---
+
+## ⚙️ Key Features
+- Manage **Members**, **Trainers**, **Sessions**, and **Membership Plans**
+- CRUD operations with **validation and business rules**
+- Repository + Unit of Work for clean data access
+- Separation of concerns for maintainability
+- Simple and intuitive web interface
 
 ---
