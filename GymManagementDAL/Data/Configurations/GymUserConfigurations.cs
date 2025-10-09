@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace GymManagementDAL.Data.Configurations
 {
-    public class GymUserConfigurations : IEntityTypeConfiguration<GymUser>
+    public class GymUserConfigurations<T> : IEntityTypeConfiguration<T> where T : GymUser
     {
-        public void Configure(EntityTypeBuilder<GymUser> builder)
+        public void Configure(EntityTypeBuilder<T> builder)
         {
             builder.Property(x => x.Name)
                 .HasColumnType("varchar")

@@ -17,7 +17,7 @@ namespace GymManagementDAL.Data.Configurations
 
             builder.Property(x => x.CreatedAt)
                 .HasColumnName("BookingDate")
-                .HasDefaultValue("GetDate()");
+                .HasDefaultValueSql("GetDate()");
 
             builder.HasOne(x => x.Session)
                 .WithMany(x => x.SessionMembers)
