@@ -124,7 +124,7 @@ namespace GymManagementBLL.Services.Classes
             {
 
                 var hasFutureSession = _unitOfWork.GetRepository<Session>()
-                                               .Any(x=>x.TrainerId==trainerId&&x.StartDate>DateTime.Now);
+                                               .Any(x=>x.TrainerId==trainerId&&x.EndDate>DateTime.Now);
                 if (hasFutureSession)
                     return false;
                 trainerRepo.Delete(trainer);
