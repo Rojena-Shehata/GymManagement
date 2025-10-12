@@ -10,17 +10,19 @@ using System.Threading.Tasks;
 
 namespace GymManagementDAL.Data.Configurations
 {
-    public class MemberConfigurations : IEntityTypeConfiguration<Member>
+    public class MemberConfigurations :GymUserConfigurations<Member>, IEntityTypeConfiguration<Member>
     {
-        public void Configure(EntityTypeBuilder<Member> builder)
+        public new void Configure(EntityTypeBuilder<Member> builder)
         {
             builder.Property(x => x.CreatedAt)
                 .HasColumnName("JoinedDate")
-                .HasDefaultValue("GetDate()");
+                .HasDefaultValueSql("GetDate()");
 
             builder.HasOne(x => x.HealthRecord)
                 .WithOne()
                 .HasForeignKey<HealthRecord>(x => x.Id);
+
+            base.Configure(builder);
         }
     }
 }
