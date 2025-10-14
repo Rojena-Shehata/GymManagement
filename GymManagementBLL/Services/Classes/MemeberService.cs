@@ -155,7 +155,7 @@ namespace GymManagementBLL.Services.Classes
             if (member is null) 
                 return false;
             var hasActiveBookings=_unitOfWork.GetRepository<Booking>()
-                .Any(x=>x.MemberId==memberId&&x.Session.StartDate>DateTime.Now);
+                .Any(x=>x.MemberId==memberId&&x.Session.StartDate>DateTime.UtcNow);
             if(hasActiveBookings)
                 return false ;
             var memberships=_unitOfWork.GetRepository<MemberShip>().GetAll(x=>x.MemberId==memberId);
@@ -208,7 +208,7 @@ namespace GymManagementBLL.Services.Classes
                 member.Address.BuildingNumber = memberViewModel.BuildingNumber;
                 member.Address.Street= memberViewModel.Street;
                 member.Address.City = memberViewModel.City;
-                member.UpdatedAt=DateTime.Now;
+                member.UpdatedAt=DateTime.UtcNow;
                 _unitOfWork.GetRepository<Member>().Update(member);
                 _unitOfWork.SaveChanges();
                 return true;

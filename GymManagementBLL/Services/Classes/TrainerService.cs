@@ -165,7 +165,7 @@ namespace GymManagementBLL.Services.Classes
                     Street = model.Street,
                     City = model.City,
                 };
-                trainer.UpdatedAt = DateTime.Now;
+                trainer.UpdatedAt = DateTime.UtcNow;
                 TrainerRepository.Update(trainer);
                return _unitOfWork.SaveChanges()>0;
             }
