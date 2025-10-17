@@ -53,7 +53,14 @@ namespace GymManagementDAL.Repositories.Classes
           return  _context.Set<TEntity>().AsNoTracking().FirstOrDefault(condition);
         }
 
-        
+        public int GetCount(Func<TEntity, bool>? condition=null)
+        {
+            if (condition is null)
+                return _context.Set<TEntity>().Count();
+            return _context.Set<TEntity>().Count(condition);
+        }
+
+
 
         //public void ExplicitLoading<Tproperty>(TEntity entity ,Expression<Func<TEntity,Tproperty?>> navigationProperty) where Tproperty : class
         //{

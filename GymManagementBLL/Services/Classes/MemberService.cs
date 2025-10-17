@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace GymManagementBLL.Services.Classes
 {
-    public class MemeberService : IMemberService
+    public class MemberService : IMemberService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public MemeberService(IUnitOfWork unitOfWork)
+        public MemberService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
