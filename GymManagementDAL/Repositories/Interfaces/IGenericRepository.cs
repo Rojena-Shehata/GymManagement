@@ -14,5 +14,6 @@ namespace GymManagementDAL.Repositories.Interfaces
         void Delete(TEntity entity);
         void DeleteRange(IEnumerable<TEntity> range);
         bool Any(Expression<Func<TEntity, bool>> condition);
+        int GetCount(Func<TEntity, bool>? condition=null);
     }
 }
