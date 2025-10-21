@@ -100,7 +100,8 @@ namespace GymManagementBLL.Services.Classes
                 Address=FormatAddress(member.Address),
             };
             var activeMemberShip = _unitOfWork.GetRepository<MemberShip>()
-                                  .GetById(x => x.MemberId == memberId && x.Status == "Active");
+                                  .GetById(x => x.MemberId == memberId && x.EndDate > DateTime.Now); //Status == "Active"
+
             if (activeMemberShip is not null )
             {
                 var activePlan=_unitOfWork.GetRepository<Plan>().GetById(activeMemberShip.PlanId);
@@ -189,21 +190,17 @@ namespace GymManagementBLL.Services.Classes
 
             try
             {
-
-                if (member.Email != memberViewModel.Email)
-                {
-                    if (IsEmailExists(memberViewModel.Email))
-                        return false;
-                    member.Email = memberViewModel.Email;
-                }
-                if(member.Phone != memberViewModel.Phone)
-                {
-                    if (IsPhoneExists(memberViewModel.Phone))
-                        return false;
-                    member.Phone = memberViewModel.Phone;
-                }
                 
+                    if (IsEmailExists(memberViewModel.Email,memberId))
+                        return false;                
+                
+                    if (IsPhoneExists(memberViewModel.Phone,memberId))
+                        return false;
+
+
                 //member.DateOfBirth = memberViewModel.DateOfBirth;
+                member.Phone = memberViewModel.Phone;
+                member.Email = memberViewModel.Email;
                 member.Gender = memberViewModel.Gender;
                 member.Address.BuildingNumber = memberViewModel.BuildingNumber;
                 member.Address.Street= memberViewModel.Street;
@@ -231,15 +228,32 @@ namespace GymManagementBLL.Services.Classes
             return $"{address.BuildingNumber}, {address.Street}, {address.City}";
         }
 
-        private bool IsEmailExists(string email)
+        private bool IsEmailExists(string email,int? id=null)
         {
-            var hasEmailExist=_unitOfWork.GetRepository<Member>().Any(x=>x.Email==email);
+            bool hasEmailExist;
+            if (id  is null)
+            {
+                hasEmailExist = _unitOfWork.GetRepository<Member>().Any(x => x.Email == email);
+
+            }
+            else
+            {                //Exclude last email of member need to update
+                hasEmailExist = _unitOfWork.GetRepository<Member>().Any(x => x.Email == email && x.Id != id);
+
+            }
             return hasEmailExist;
+
         }
-        private bool IsPhoneExists(string phone)
+        private bool IsPhoneExists(string phone, int? id=null)
         {
-            var hasPhoneExist=_unitOfWork.GetRepository<Member>().Any(x=>x.Phone==phone);
-            return hasPhoneExist;
+            bool isPhoneExist;
+            if(id is null)
+                isPhoneExist = _unitOfWork.GetRepository<Member>().Any(x => x.Phone == phone);
+            else
+                isPhoneExist = _unitOfWork.GetRepository<Member>().Any(x => x.Phone == phone && x.Id != id);//Exclude phone of user need to update           
+
+
+            return isPhoneExist;
         }
         #endregion
     }
