@@ -193,18 +193,15 @@ namespace GymManagementBLL.Services.Classes
             if (email == null) 
                 return false;
            var IsExist=  _unitOfWork.GetRepository<Trainer>().Any(x=>x.Email== email);
-            if (IsExist)
-                return false;
-            return true;
+            
+                return IsExist;
         }
         private bool IsPhoneExists(string phone)
         {
             if (phone == null) 
                 return false;
            var IsExist=  _unitOfWork.GetRepository<Trainer>().Any(x=>x.Phone == phone);
-            if (IsExist)
-                return false;
-            return true;
+            return IsExist;
         }
         #endregion
     }

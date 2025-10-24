@@ -17,6 +17,8 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
 
         [Required(ErrorMessage ="Email is Required.")]
         [EmailAddress(ErrorMessage ="Invalid Email Address!")]
+        [RegularExpression(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$",
+        ErrorMessage = "That doesn’t look like a valid email. Please use the format name@example.com.")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; } = null!;
         [Required(ErrorMessage = "Phone Number is required")]
@@ -25,7 +27,7 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; } = null!;
         [Required(ErrorMessage ="Date Of Birth is Required")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date,ErrorMessage ="Invalid date!")]
         public DateOnly DateOfBirth { get; set; }
 
         [Required(ErrorMessage ="Gender Is required")]
