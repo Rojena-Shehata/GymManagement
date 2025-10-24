@@ -11,6 +11,10 @@ namespace GymManagementBLL
 {
     public class MappingProfile:Profile
     {
+        public MappingProfile()
+        {
+            MapSession();
+        }
 
         private void MapSession()
         {

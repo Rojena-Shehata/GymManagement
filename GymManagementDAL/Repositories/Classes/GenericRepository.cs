@@ -60,6 +60,11 @@ namespace GymManagementDAL.Repositories.Classes
             return _context.Set<TEntity>().Count(condition);
         }
 
+        //public IEnumerable<TResult> SelectSpecified<TResult>(Func<TEntity, TResult> selector)
+        //{
+        //    return  _context.Set<TEntity>().Select(x=>new sele);
+        //}
+
 
 
         //public void ExplicitLoading<Tproperty>(TEntity entity ,Expression<Func<TEntity,Tproperty?>> navigationProperty) where Tproperty : class

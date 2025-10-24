@@ -30,7 +30,7 @@ namespace GymManagementBLL.Services.Classes
                 return false;
             if(!IsCategoryExist(sessionModel.CategoryId))
                 return false;
-            if(IsValidDateRange(sessionModel.StartDate, sessionModel.EndDate)) 
+            if(!IsValidDateRange(sessionModel.StartDate, sessionModel.EndDate)) 
                 return false;
 
             var session=_mapper.Map<CreateSessionViewModel,Session>(sessionModel);
@@ -49,7 +49,7 @@ namespace GymManagementBLL.Services.Classes
                             .GetAllSessionsWithTrainerAndCategory()
                             .OrderByDescending(x=>x.StartDate);
 
-            if (sessions == null || sessions.Any())
+            if (sessions == null || !sessions.Any())
                 return [];
             //automatic mapping => auto mapper
             var mappedSessions=_mapper.Map<IEnumerable<Session>,IEnumerable<SessionViewModel>>(sessions);
@@ -123,6 +123,33 @@ namespace GymManagementBLL.Services.Classes
 
 
 
+
+        public IEnumerable<CategorySelectViewModel> GetCategoriesForDropDown()
+        {
+            var categories = _unitOfWork.GetRepository<Category>().GetAll();
+            if (categories is null) return [];
+            return categories.Select(c => new CategorySelectViewModel
+            {
+                Id=c.Id,
+                Name=c.CategoryName
+            });
+
+        }
+
+        public IEnumerable<TrainerSelectViewModel> GetTrainersForDropDown()
+        {
+
+            var trainers = _unitOfWork.GetRepository<Trainer>().GetAll();
+            if (trainers is null) return [];
+            return trainers.Select(c => new TrainerSelectViewModel
+            {
+                Id = c.Id,
+                Name = c.Name
+            });
+        }
+
+
+
         #region Helper Methods
         private bool IsTrainerExist(int trainerId)
         {
@@ -162,6 +189,7 @@ namespace GymManagementBLL.Services.Classes
 
             return true;
         }
+
 
         #endregion
     }

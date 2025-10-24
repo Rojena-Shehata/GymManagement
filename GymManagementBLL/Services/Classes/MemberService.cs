@@ -55,8 +55,7 @@ namespace GymManagementBLL.Services.Classes
                 };
 
                 _unitOfWork.GetRepository<Member>().Add(member);
-                _unitOfWork.SaveChanges();
-                return true;
+              return  _unitOfWork.SaveChanges()>0;
             }
             catch 
             {
