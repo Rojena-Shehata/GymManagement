@@ -1,4 +1,5 @@
 ﻿using GymManagementBLL.Services.Interfaces;
+using GymManagementBLL.ViewModels.SessionViewModels;
 using GymManagementBLL.ViewModels.TrainerViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -133,5 +134,7 @@ namespace GymManagementPL.Controllers
 
             return View(nameof(Index));
         }
+
+       
     }
 }

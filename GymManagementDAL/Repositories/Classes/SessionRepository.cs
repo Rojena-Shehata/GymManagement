@@ -21,9 +21,10 @@ namespace GymManagementDAL.Repositories.Classes
 
         public IEnumerable<Session> GetAllSessionsWithTrainerAndCategory()
         {
-            return _context.Sessions
+            var sessions= _context.Sessions
                 .Include(s => s.Trainer)
                 .Include(s => s.Category);
+            return sessions;
                 
         }
 

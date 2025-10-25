@@ -9,6 +9,7 @@ namespace GymManagementBLL.Services.Interfaces
 {
     public interface IPlanService
     {
+        bool CreatePlan(CreatePlanViewModel model);
         bool UpdatePlan(int planId,UpdatePlanViewModel model);
         UpdatePlanViewModel? GetPlanToUpdate(int planId);
         IEnumerable<PlanViewModel> GetAllPlans();

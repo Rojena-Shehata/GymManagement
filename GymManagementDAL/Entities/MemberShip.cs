@@ -14,7 +14,7 @@ namespace GymManagementDAL.Entities
         {
             get
             {
-                if (EndDate >= DateTime.Now)
+                if (EndDate >= DateTime.UtcNow)
                 {
                     return "Active";
                 }

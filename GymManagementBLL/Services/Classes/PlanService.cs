@@ -2,6 +2,7 @@
 using GymManagementBLL.ViewModels.PlanViewModels;
 using GymManagementDAL.Entities;
 using GymManagementDAL.Repositories.Interfaces;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +33,34 @@ namespace GymManagementBLL.Services.Classes
             return _unitOfWork.SaveChanges()>0;
         }
 
+        public bool CreatePlan(CreatePlanViewModel model)
+        {
+            if(model is null) 
+                return false;
+            try
+            {
+
+
+                var plan = new Plan
+                {
+                    Name = model.PlanName,
+                    DurationDays = model.DurationDays,
+                    Description = model.Description,
+                    Price = model.Price,
+                    IsActive = model.IsActive
+                };
+                _unitOfWork.GetRepository<Plan>().Add(plan);
+                return _unitOfWork.SaveChanges() > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public IEnumerable<PlanViewModel> GetAllPlans()
         {
-            var plans=_unitOfWork.GetRepository<Plan>().GetAll();
+            var plans=_unitOfWork.GetRepository<Plan>().GetAll().OrderByDescending(x=>x.IsActive).ThenBy(x=>x.Price);
             if (plans is null || !plans.Any())
                 return [];
             var model = plans.Select(plan => new PlanViewModel
@@ -112,7 +138,9 @@ namespace GymManagementBLL.Services.Classes
         private bool HasActiveMemberShips(int planId)
         {
             return _unitOfWork.GetRepository<MemberShip>()
-                .Any(p => p.PlanId == planId&& p.Status=="Active" );
+                .Any(p => p.PlanId == planId&& p.EndDate>=DateTime.UtcNow);
+          //  return _unitOfWork.GetRepository<MemberShip>()
+              //  .Any(p => p.PlanId == planId&& p.Status=="Active" );
         }
 
         #endregion
