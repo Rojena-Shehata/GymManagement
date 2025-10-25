@@ -96,10 +96,10 @@ namespace GymManagementBLL.Services.Classes
                 return false;
             if(!IsTrainerExist(sessionModel.TrainerId))
                 return false;
-            if(IsValidDateRange(sessionModel.StartDate,sessionModel.EndDate))
+            if(!IsValidDateRange(sessionModel.StartDate,sessionModel.EndDate))
                 return false;
           
-            session=  _mapper.Map<UpdateSessionViewModel, Session>(sessionModel);
+              _mapper.Map<UpdateSessionViewModel, Session>(sessionModel,session);
             session.UpdatedAt=DateTime.UtcNow;
             _unitOfWork.GetRepository<Session>().Update(session);
            
