@@ -21,5 +21,6 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
         public string? PlanName { get; set; } = null;
         public string? MembershipStartDate { get; set; } = null;
         public string? MembershipEndDate { get; set; } = null;
+        public string? photo { get; set; } = null;
     }
 }

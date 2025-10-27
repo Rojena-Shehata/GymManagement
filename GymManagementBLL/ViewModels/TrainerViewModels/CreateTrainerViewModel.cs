@@ -29,6 +29,7 @@ namespace GymManagementBLL.ViewModels.TrainerViewModels
         public string Phone { get; set; } = null!;
 
         [DataType(DataType.Date,ErrorMessage ="Invalid Date")]
+        [Display(Name="Date of Birth")]
         public DateOnly DateOfBirth { get; set; }
 
         [Required(ErrorMessage ="Gender is Required")]

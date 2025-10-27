@@ -54,7 +54,8 @@
                                 <span class="avatar">
                                     @if (!string.IsNullOrEmpty(member.Photo))
                                     {
-                                        <img src="~/images/@member.Photo" alt="@member.Name" class="rounded-circle" style="width:50px" />
+                                    
+                                        <img src="~/images/Members/@(member.Photo)" alt="@member.Name" class="rounded-circle" style="width:50px" />
                                     }
                                     else
                                     {
