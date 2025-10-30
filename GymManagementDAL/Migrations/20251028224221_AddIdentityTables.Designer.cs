@@ -4,6 +4,7 @@ using GymManagementDAL.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManagementDAL.Migrations
 {
     [DbContext(typeof(GymDbContext))]
-    partial class GymDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251028224221_AddIdentityTables")]
+    partial class AddIdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,7 +124,7 @@ namespace GymManagementDAL.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("Bookings", (string)null);
+                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("GymManagementDAL.Entities.Category", b =>
@@ -145,7 +148,7 @@ namespace GymManagementDAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("GymManagementDAL.Entities.HealthRecord", b =>
@@ -168,7 +171,7 @@ namespace GymManagementDAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Members", (string)null);
+                    b.ToTable("Members");
                 });
 
             modelBuilder.Entity("GymManagementDAL.Entities.Member", b =>
@@ -217,7 +220,7 @@ namespace GymManagementDAL.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Members", null, t =>
+                    b.ToTable("Members", t =>
                         {
                             t.HasCheckConstraint("GymUser_EmailCheck", "Email LIKE '_%@_%._%'");
 
@@ -249,7 +252,7 @@ namespace GymManagementDAL.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("MemberShips", (string)null);
+                    b.ToTable("MemberShips");
                 });
 
             modelBuilder.Entity("GymManagementDAL.Entities.Plan", b =>
@@ -288,7 +291,7 @@ namespace GymManagementDAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Plans", null, t =>
+                    b.ToTable("Plans", t =>
                         {
                             t.HasCheckConstraint("PlanDurationCheck", "DurationDays Between 1 and 365");
                         });
@@ -333,7 +336,7 @@ namespace GymManagementDAL.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Sessions", null, t =>
+                    b.ToTable("Sessions", t =>
                         {
                             t.HasCheckConstraint("SessionCapacityCheck", "Capacity between 1 and 25");
 
@@ -387,7 +390,7 @@ namespace GymManagementDAL.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Trainers", null, t =>
+                    b.ToTable("Trainers", t =>
                         {
                             t.HasCheckConstraint("GymUser_EmailCheck", "Email LIKE '_%@_%._%'")
                                 .HasName("GymUser_EmailCheck1");
@@ -583,7 +586,7 @@ namespace GymManagementDAL.Migrations
 
                             b1.HasKey("MemberId");
 
-                            b1.ToTable("Members", (string)null);
+                            b1.ToTable("Members");
 
                             b1.WithOwner()
                                 .HasForeignKey("MemberId");
@@ -656,7 +659,7 @@ namespace GymManagementDAL.Migrations
 
                             b1.HasKey("TrainerId");
 
-                            b1.ToTable("Trainers", (string)null);
+                            b1.ToTable("Trainers");
 
                             b1.WithOwner()
                                 .HasForeignKey("TrainerId");

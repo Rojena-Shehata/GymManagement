@@ -1,9 +1,10 @@
 ﻿/* ^ global style */
 
 :root {
-    --primary-color: #070093;
+    --primary-color: #2c466d;
     --main-duration: 300ms;
     --black-alternative: #242424;
+    --primary-dark: #243551;
 }
 
 button {
@@ -237,34 +238,34 @@ section.workout {
     border-style: solid;
 }
 
-/* Filled Button - Default State */
+
 .btn-fill {
-    background-color: #070093;
-    border-color: #070093;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     color: #fff;
 }
-
-    /* Filled Button - Hover State (Switch to Outline) */
     .btn-fill:hover {
-        background-color: transparent;
-        border-color: #070093;
-        color: #070093;
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
     }
+    /* Filled Button - Hover State (Switch to Outline) */
+
 
 /* Outline Button - Default State */
 .btn-outline {
     background-color: transparent;
-    border-color: #070093;
-    color: #070093;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
-
     /* Outline Button - Hover State (Switch to Fill) */
     .btn-outline:hover {
-        background-color: #070093;
-        border-color: #070093;
+        background-color: var(--primary-color);
         color: #fff;
     }
-
+.navbar .navbar-nav a:not(.logout-link):hover {
+    background-color: #3b6aa8; /* lighter blue */
+    color: #ffffff;
+}
     /* Focus States for Accessibility */
     .btn-fill:focus,
     .btn-outline:focus {

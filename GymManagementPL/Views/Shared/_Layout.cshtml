@@ -1,6 +1,6 @@
 ﻿
 @{
-    // var viewController = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var CurrentController = ViewContext.RouteData.Values["Controller"]?.ToString();
 }
 <!DOCTYPE html>
 
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <!-- ^ Our main css file -->
     <link rel="stylesheet" href="~/css/style.css" />
-    <title>Power fitness | Home</title>
+    <title>Gym fitness | @ViewBag.Title</title>
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -40,25 +40,37 @@
                     <ul class="navbar-nav m-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
                         <li class="nav-item">
                         <li class="nav-item">
-                            <a class="nav-link active px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-controller="Home" asp-action="index">Home</a>
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5  @(CurrentController == "Home" ? "active" : "")" aria-current="page" asp-controller="Home" asp-action="index">Home</a>
+                        </li>
+                            @if (User.IsInRole("SuperAdmin"))
+                            {
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5   @(CurrentController == "Member" ? "active" : "")" aria-current="page" asp-controller="Member" asp-action="index">Members</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link   px-3 py-2 mx-2 fw-bolder fs-5  @(CurrentController == "Trainer" ? "active" : "")" aria-current="page" asp-action="index" asp-controller="Trainer">Trainers</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5 @(CurrentController == "Session"?"active":"")" aria-current="page" asp-controller="Session" asp-action="index">Sessions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-controller="Member" asp-action="index">Members</a>
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5 @(CurrentController == "Plan"?"active":"")" aria-current="page" asp-controller="Plan" asp-action="index">Plans</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-action="index" asp-controller="Trainer">Trainers</a>
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5 @(CurrentController == "Membership"?"active":"")" aria-current="page" asp-controller="Membership" asp-action="index">Memberships</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-controller="Session" asp-action="index">Sessions</a>
+                            <a class="nav-link normal px-3 py-2 mx-2 fw-bolder fs-5  hover @(CurrentController == "Bookig" ? "active" : "")" aria-current="page" asp-controller="Bookig" asp-action="index">Sessions Schedule</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-controller="Plan" asp-action="index">Plans</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-controller="Membership" asp-action="index">Memberships</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-controller="Sessions Schedule" asp-action="index">Sessions Schedule</a>
+                            <a asp-controller="Account" asp-action="Logout"
+                               class="nav-link btn @(CurrentController == "Account" ? "btn-danger" : "btn-outline-danger")
+                                    rounded-pill px-3 py-2  mx-2  logout-link">
+                                <i class="bi bi-box-arrow-right me-2"></i> Logout
+                            </a>
                         </li>
                     </ul>
                 </div>

@@ -6,9 +6,9 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
 {
     public class CreateMemberViewModel
     {
-        [Required(ErrorMessage ="Profile Photo is Required")]
+       // [Required(ErrorMessage ="Profile Photo is Required")]
         [Display(Name="Profile Photo")]
-        public IFormFile Photo { get; set; }
+        public IFormFile? Photo { get; set; }
         [Required(ErrorMessage ="Name Is Required.")]
         [RegularExpression(@"^[A-Za-z\s]+$",ErrorMessage = "Only English letters and spaces are allowed.")]
         [StringLength(50,ErrorMessage = "Name cannot exceed 50 characters.")]

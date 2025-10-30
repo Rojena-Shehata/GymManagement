@@ -8,7 +8,6 @@ namespace GymManagementBLL.ViewModels.MembershipViewModels
 {
     public class MembershipViewModel
     {
-        public int Id { get; set; }
 
         //  Member info
         public int MemberId { get; set; }
