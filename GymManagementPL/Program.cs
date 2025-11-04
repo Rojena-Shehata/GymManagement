@@ -31,6 +31,9 @@ namespace GymManagementPL
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             //session repo
             builder.Services.AddScoped<ISessionRepository, SessionRepository>();
+            //booking repo
+            builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+
             //services
             builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
             builder.Services.AddScoped<ISessionService, SessionService>();
@@ -39,6 +42,7 @@ namespace GymManagementPL
             builder.Services.AddScoped<ITrainerService, TrainerService>();
             builder.Services.AddScoped<IAttachmentService, AttachmentService>();
             builder.Services.AddScoped<IMembershipService, MembershipService>();
+            builder.Services.AddScoped<IBookingService, BookingService>();
 
             builder.Services.AddScoped<IAccountService, AccountService>();
 

@@ -16,7 +16,6 @@ namespace GymManagementBLL.ViewModels.MembershipViewModels
         [Required(ErrorMessage = "Please select a plan.")]
         [Display(Name = "Member")]
         public int PlanId { get; set; }
-
         public DateTime StartDate { get; set; }= DateTime.UtcNow;
         public DateTime EndDate { get; set; }
 
