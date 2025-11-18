@@ -2,6 +2,7 @@
 using GymManagementBLL.ViewModels.MemberViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace GymManagementPL.Controllers
 {
@@ -9,10 +10,12 @@ namespace GymManagementPL.Controllers
     public class MemberController : Controller
     {
         private readonly IMemberService _memberService;
+        private readonly IStringLocalizer _stringLocalizer;
 
-        public MemberController(IMemberService memberService)
+        public MemberController(IMemberService memberService,IStringLocalizer<MemberController> stringLocalizer)
         {
             _memberService = memberService;
+            _stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
@@ -27,7 +30,7 @@ namespace GymManagementPL.Controllers
             var member=_memberService.GetMemberDetails(id);
             if (member is null)
             {
-                TempData["ErrorMessage"] = "Member is not found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["member"]);
                 return RedirectToAction(nameof(Index));
             }
             return View(member);
@@ -38,8 +41,8 @@ namespace GymManagementPL.Controllers
             var member= _memberService.GetMemberHealthRecord(id);
             if (member is null)
             {
-                TempData["ErrorMessage"] = "Member is not found";
-                return RedirectToAction(nameof(Index));
+                TempData["ErrorMessage"]= string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["member"]);             
+                    return RedirectToAction(nameof(Index));
             }
             return View(member);
         }
@@ -53,18 +56,18 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("DataMissed", "Check Missing Data");
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
                 return View(nameof(Create),model);
             }
             bool IsCreated = _memberService.createMember(model);
             if (IsCreated)
             {
-                TempData["SuccessMessage"] = "Member is Created, Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["member"], _stringLocalizer["created"]);
                 return RedirectToAction(nameof(Index), model);
             }
             else
             {
-                ModelState.AddModelError("EmailOrPhoneExistError", "Email or phone number already exist");
+                ModelState.AddModelError("EmailOrPhoneExistError", _stringLocalizer["errors.emailOrPhoneExists"]);
                 return View(nameof(Create), model);
             }
         }
@@ -74,8 +77,8 @@ namespace GymManagementPL.Controllers
             var member = _memberService.GetMemberToUpdate(id);
             if (member is null)
             {
-                TempData["ErrorMessage"] = "Member is Not Found";
-                return RedirectToAction(nameof(EditMember));
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["member"]);
+                return RedirectToAction(nameof(Index));
             }
             return View(nameof(EditMember),member);
         }
@@ -84,18 +87,20 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
+
                 return View(nameof(EditMember),model);
             }
             bool isMemberUpdated = _memberService.UpdateMemberData(id,model);
             if (isMemberUpdated)
             { 
-                TempData["SuccessMessage"] = "Member Data Updated Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["member"], _stringLocalizer["updated"]); ;
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                TempData["ErrorMessage"] = "Member failed to be Updated";
-                return RedirectToAction(nameof(EditMember),model);
+                ModelState.AddModelError("error", _stringLocalizer["errors.emailOrPhoneExists"]);
+                return View(nameof(EditMember),model);
             }
 
         }
@@ -105,13 +110,13 @@ namespace GymManagementPL.Controllers
         {
             if(id<=0)
             {
-                TempData["ErrorMessage"] = "Member id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var member=_memberService.GetMemberDetails(id);
             if (member is null)
             {
-                TempData["ErrorMessage"] = "Member not found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["member"]);
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.MembrId=member.Id;
@@ -123,14 +128,14 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Member id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var isDeleted=_memberService.RemoveMember(id);
             if(! isDeleted)
-                TempData["ErrorMessage"] = "Member can't deleted";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["member"], _stringLocalizer["deleted"]); 
             else
-                TempData["SuccessMessage"] = "Member deleted Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["member"], _stringLocalizer["deleted"]);
             return RedirectToAction(nameof(Index));
         }
     }

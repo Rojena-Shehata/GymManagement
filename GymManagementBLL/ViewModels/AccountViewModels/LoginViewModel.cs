@@ -9,9 +9,9 @@ namespace GymManagementBLL.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage ="Email is required")]
+        [Display(Name = "email"), Required(ErrorMessage = "required")]
         public string Email { get; set; } = null!;
-        [Required(ErrorMessage = "Password is required")]
+        [Display(Name = "password"), Required(ErrorMessage = "required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }=null!;
         public bool RememberMe { get; set; }

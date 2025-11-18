@@ -1,4 +1,9 @@
 ﻿@model AddMembershipViewModel 
+
+
+@inject IViewLocalizer viewLocalizer
+
+
 @{
     ViewData["Title"] = "Add new Membership";
 }
@@ -14,39 +19,39 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    <h4>@ViewData["Title"]</h4>
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h4>@viewLocalizer["addMembershipTitle"]</h4>
                 </div>
                 <div class="card-body">
                     <form  asp-action="Create" method="post" asp-controller="Membership">
 
                         <div class="mb-3">
-                            <label asp-for="MemberId" class="form-label">Member<span class="text-danger">*</span></label>
+                            <label asp-for="MemberId" class="form-label">@viewLocalizer["member"]<span class="text-danger">*</span></label>
                             <select class="form-select" asp-for="MemberId" asp-items="@ViewBag.Members">
-                                <option value="">-- Select Member --</option>
+                                <option value="">-- @viewLocalizer["selectMember"] --</option>
                                 
                             </select>
                             <span asp-validation-for="MemberId"    class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Plan<span class="text-danger">*</span></label>
+                            <label class="form-label">@viewLocalizer["plan"]<span class="text-danger">*</span></label>
                             <select class="form-select" asp-for="PlanId"   asp-items="@ViewBag.Plans">
-                                <option value="">-- Select Plan --</option>
+                                <option value="">-- @viewLocalizer["selectPlan"] --</option>
                             </select>
                             <span asp-validation-for="PlanId" class="text-danger"></span>
                         </div>
                         <div>
-                            <label  asp-for="StartDate"  class="form-label">StartDate</label>
+                            <label asp-for="StartDate" class="form-label">@viewLocalizer["startDate"]</label>
                             <input asp-for="StartDate" 
                             value="@(Model  is null||Model.StartDate==DateTime.MinValue?DateTime.UtcNow.ToString():Model.StartDate.ToString())" 
-                            type="datetime"   />
+                            type="datetime"/>
                             <span asp-validation-for="StartDate" class="text-danger"></span>
 
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Create Membership</button>
-                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">@viewLocalizer["create"]</button>
+                            <a asp-action="Index" class="btn btn-secondary">@viewLocalizer["cancel"]</a>
                         </div>
                     </form>
                 </div>

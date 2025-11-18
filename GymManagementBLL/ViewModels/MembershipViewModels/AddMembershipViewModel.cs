@@ -9,12 +9,10 @@ namespace GymManagementBLL.ViewModels.MembershipViewModels
 {
     public class AddMembershipViewModel
     {
-        [Required(ErrorMessage = "Please select a member.")]
-        [Display(Name = "Member")]
+        [Display(Name = "member"), Required(ErrorMessage = "required")]
         public int MemberId { get; set; }
 
-        [Required(ErrorMessage = "Please select a plan.")]
-        [Display(Name = "Member")]
+        [Display(Name = "plan"), Required(ErrorMessage = "required")]
         public int PlanId { get; set; }
         public DateTime StartDate { get; set; }= DateTime.UtcNow;
         public DateTime EndDate { get; set; }

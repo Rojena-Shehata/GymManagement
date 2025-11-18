@@ -7,10 +7,12 @@ using GymManagementDAL.Data.DataSeed;
 using GymManagementDAL.Entities;
 using GymManagementDAL.Repositories.Classes;
 using GymManagementDAL.Repositories.Interfaces;
+using GymManagementPL.Localization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Localization;
+using System.Globalization;
 
 namespace GymManagementPL
 {
@@ -68,6 +70,38 @@ namespace GymManagementPL
                 options.AccessDeniedPath = "/Account/AccessDenied";
             });
 
+
+            #region  Services For Localization
+
+            builder.Services.AddLocalization();
+            //Cache
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
+
+            builder.Services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization(options =>
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(JsonStringLocalizerFactory));
+                });
+
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("ar-EG")
+                };
+                //options.DefaultRequestCulture = new RequestCulture(culture: supportedCultures[0], uiCulture: supportedCultures[0]);
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
+            #endregion
+
+
             var app = builder.Build();
 
             #region Data Seeding
@@ -102,6 +136,19 @@ namespace GymManagementPL
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
+
+
+
+            #region Localization
+            var supportedCultures = new[] { "en-US", "ar-EG" };
+            var localizationOptions = new RequestLocalizationOptions()
+                                                //.SetDefaultCulture(supportedCultures[0])
+                                                .AddSupportedCultures(supportedCultures)
+                                                .AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
+
+            #endregion
 
             app.Run();
         }

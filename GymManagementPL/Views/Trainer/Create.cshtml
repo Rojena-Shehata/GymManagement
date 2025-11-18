@@ -5,50 +5,51 @@
 
 <div class="container mt-4">
     <header class="mb-4">
-        <h3 class="text-primary-color">Add New Trainer</h3>
+        <h3 class="text-primary-color">
+            @viewLocalizer["addNewTrainer"]</h3>
     </header>
 
     @Html.ValidationMessage("DataMissed", new { @class = "text-danger" })
     @Html.ValidationMessage("EmailOrPhoneExistError", new { @class = "text-danger" })
-    <form method="post">
+    <form method="post" asp-controller="Trainer" asp-action="Create">
 
         <!-- Trainer Info -->
         <div class="section-header mb-3">
-            <h5 class="text-primary fw-bold">Personal Information</h5>
+            <h5 class="text-primary fw-bold"> @viewLocalizer["personalInformation"]</h5>
             <hr class="mt-2">
         </div>
         <div class="row g-3">
             <div class="col-12 col-md-6">
-                <label asp-for="Name" class="form-label">Name</label>
+                <label asp-for="Name" class="form-label"> @viewLocalizer["name"]</label>
                 <input asp-for="Name"  class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="col-12 col-md-6">
-                <label asp-for="Email" class="form-label">Email</label>
+                <label asp-for="Email" class="form-label"> @viewLocalizer["email"]</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
 
             </div>
 
             <div class="col-12 col-md-6">
-                <label asp-for="Phone" class="form-label">Phone</label>
+                <label asp-for="Phone" class="form-label"> @viewLocalizer["phone"]</label>
                 <input asp-for="Phone"  class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
 
             </div>
 
             <div class="col-12 col-md-6">
-                <label asp-for="DateOfBirth" class="form-label">DateOfBirth</label>
+                <label asp-for="DateOfBirth" class="form-label"> @viewLocalizer["dateOfBirth"]</label>
                 <input asp-for="DateOfBirth" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
 
             </div>
 
             <div class="col-12 col-md-6">
-                <label asp-for="Gender" class="form-label">Gender</label>
+                <label asp-for="Gender" class="form-label"> @viewLocalizer["gender"]</label>
                 <select asp-for="Gender"  asp-items="@Html.GetEnumSelectList<Gender>()" class="form-select">
-                    <option value="">-- Select Gender --</option>
+                    <option value="">--  @viewLocalizer["selectGender"] --</option>
                    
                 </select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
@@ -57,26 +58,26 @@
 
         </div>
         <div class="section-header mb-3 mt-4">
-            <h5 class="text-primary fw-bold">Address Information</h5>
+            <h5 class="text-primary fw-bold"> @viewLocalizer["addressInformation"]</h5>
             <hr class="mt-2">
         </div>
         <div class="row g-3">
 
             <div class="col-12 col-md-6">
-                <label asp-for="BuildingNumber" class="form-label">BuildingNumber</label>
+                <label asp-for="BuildingNumber" class="form-label"> @viewLocalizer["buildingNumber"]</label>
                 <input asp-for="BuildingNumber" class="form-control" />
                 <span asp-validation-for="BuildingNumber" class="text-danger"></span>
 
             </div>
 
             <div class="col-12 col-md-6">
-                <label asp-for="Street" class="form-label">Street</label>
+                <label asp-for="Street" class="form-label"> @viewLocalizer["street"]</label>
                 <input asp-for="Street" class="form-control" />
                 <span asp-validation-for="Street" class="text-danger"></span>
 
             </div>
             <div class="col-12 col-md-6">
-                <label asp-for="City" class="form-label">City</label>
+                <label asp-for="City" class="form-label"> @viewLocalizer["city"]</label>
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
 
@@ -84,47 +85,35 @@
         </div>
         <!-- Professional Information -->
         <div class="section-header mb-3">
-            <h5 class="text-primary fw-bold">Professional Information</h5>
+            <h5 class="text-primary fw-bold">
+                @viewLocalizer["professionalInfo"]
+                </h5>
             <hr class="mt-2">
         </div>
-        <div class="row g-3">
-            <div class="col-12">
-                @* <label class="form-label fw-semibold">
-                    Specializations <span class="text-danger">*</span>
-                </label> *@
 
-                <div class="form-check">
-                    @foreach(var speciality in Enum.GetValues<Specialties>())
-                        {
+        <div class="row g-3">
+
+            <div class="col-12">
+                <label class="form-label fw-semibold">
+                    Specializations <span class="text-danger">*</span>
+                </label>
+            </div>
+            </div>
+            <div class="form-check">
+                    @foreach (var item in Html.GetEnumSelectList<Specialties>())
+                    {
                         <div class="form-check">
 
-                        <input  asp-for="Specialization" class="form-check-input" type="radio"
-                               value="@speciality" />
-                        <label asp-for="Specialization" class="form-check-label">@speciality</label>
+                        <input  asp-for="Specialization"  class="form-check-input" type="radio"
+                           value="@item.Value" />
+                            <label  class="form-check-label">@item.Text</label>
                         </div>
-
-                        }
-                        <span asp-validation-for="Specialization" class="text-danger"></span>
-                @*         <input class="form-check-input" type="radio" name="Specialties"
-                           value="GeneralFitness" />
-                    <label class="form-check-label">GeneralFitness</label>
+                    }
+                    <span asp-validation-for="Specialization" class="text-danger"></span>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Specialties" value="Yoga" />
-                    <label class="form-check-label">Yoga</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Specialties" value="Boxing" />
-                    <label class="form-check-label">Boxing</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Specialties" value="CrossFit" />
-                    <label class="form-check-label">CrossFit</label>
-                </div> *@
-        </div>
 
         <footer class="d-flex justify-content-end mt-4">
-            <button type="submit" class="btn btn-fill">Add</button>
+            <button  type="submit" class="btn btn-fill">Add</button>
         </footer>
     </form>
 

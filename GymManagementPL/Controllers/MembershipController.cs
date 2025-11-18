@@ -2,16 +2,19 @@
 using GymManagementBLL.ViewModels.MembershipViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 
 namespace GymManagementPL.Controllers
 {
     public class MembershipController : Controller
     {
         private readonly IMembershipService _membershipService;
+        private readonly IStringLocalizer<MembershipController> _stringLocalizer;
 
-        public MembershipController(IMembershipService membershipService)
+        public MembershipController(IMembershipService membershipService,IStringLocalizer<MembershipController>stringLocalizer)
         {
             _membershipService = membershipService;
+            _stringLocalizer = stringLocalizer;
         }
         public IActionResult Index()
         {
@@ -29,7 +32,7 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Errors = "Check  missed  Data";
+                ViewBag.Errors = _stringLocalizer["errors.dataMissing"].Value;
                 LoadMembersForDroupDown();
                 LoadPlansForDroupDown();
 
@@ -38,26 +41,27 @@ namespace GymManagementPL.Controllers
             var isCreated=_membershipService.Create(input);
             if (!isCreated)
 
-                TempData["ErrorMessage"] = "Failed   to  add membership";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["membership"], _stringLocalizer["created"]);
             else
-                TempData["SuccessMessage"] = "Membership created successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["membership"], _stringLocalizer["created"]);
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
         public IActionResult Cancel(int memberId)
         {
             if (memberId <= 0)
             {
-                TempData["ErrorMessage"] = "id must be greater than 0";
+                TempData["ErrorMessage"] = _stringLocalizer["messages.invalidId"].Value;
                 return View();
             }
             var isDeleted = _membershipService.Remove(memberId);
             if (isDeleted)
-                TempData["SuccessMessage"] = "Membership Successfully Canceled";
+                TempData["SuccessMessage"] = _stringLocalizer["membershipCanceledSuccess"].Value;
             else
-                TempData["ErrorMessage"] = "Membership failed to be canceled";
-            return View(nameof(Index));
+                TempData["ErrorMessage"] = _stringLocalizer["membershipCanceledError"].Value;
 
+            return RedirectToAction(nameof(Index));
         }
 
 

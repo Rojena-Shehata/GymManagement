@@ -8,30 +8,33 @@
         <div class="col-md-8 col-lg-6">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-primary text-white text-center rounded-top-4">
-                    <h4 class="mb-0"><i class="fas fa-calendar-plus me-2"></i> Create New Booking</h4>
+                    <h4 class="mb-0">
+                        <i class="fas fa-calendar-plus me-2"></i> @viewLocalizer["createBookingHeader"]
+                    </h4>
                 </div>
                 <div class="text-danger">
                     @Html.ValidationMessage("DataMissed")
                 </div>
                 <div class="card-body p-4">
-                    <form method="post" asp-action="Create">
+                    <form method="post" asp-action="Create" asp-route-sessionId="@Context.Request.Query["SessionId"]">
                         <dev></dev>
                         <div class="mb-4">
                             <label asp-for="memberId" class="form-label fw-semibold">
-                                <i class="fas fa-user me-1"></i> Member
+                                <i class="fas fa-user me-1"></i> @viewLocalizer["member"]
                             </label>
                             <select asp-for="memberId" class="form-select form-select-lg rounded-3" asp-items="ViewBag.Members">
-                                <option value="">-- Select Member --</option>
+                                <option value="">-- @viewLocalizer["selectMember"] --</option>
                             </select>
                             <span asp-validation-for="memberId" class="text-danger small"></span>
                         </div>
 
                         <div class="mb-4">
-                            <label asp-for="Memberphone" class="form-label fw-semibold">
-                                <i class="fas fa-phone-alt me-1"></i> Member Phone
+                            <label asp-for="MemberPhone" class="form-label fw-semibold">
+                                <i class="fas fa-phone-alt me-1"></i> @viewLocalizer["memberPhone"]
+
                             </label>
-                            <input asp-for="Memberphone" class="form-control form-control-lg rounded-3" placeholder="Enter member phone" />
-                            <span  asp-validation-for="Memberphone" class="text-danger"></span>
+                            <input asp-for="MemberPhone" class="form-control form-control-lg rounded-3" placeholder="@viewLocalizer["memberPhonePlaceholder"].Value" />
+                            <span  asp-validation-for="MemberPhone" class="text-danger"></span>
                         </div>
                         <div>
                             <input hidden readonly asp-for="SessionId" value="@ViewBag.SessionId" />
@@ -39,11 +42,11 @@
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-between mt-4">
-                            <a asp-action="GetMembersForUpcomingSession" asp-controller="MemberSession" class="btn btn-outline-secondary px-4 rounded-3">
-                                <i class="fas fa-arrow-left me-1"></i> Back
+                            <a asp-action="GetMembersForUpcomingSession" asp-controller="Booking" asp-route-sessionId="@Context.Request.Query["sessionId"]" class="btn btn-outline-secondary px-4 rounded-3">
+                                <i class="fas fa-arrow-left me-1"></i> @viewLocalizer["backToList"]
                             </a>
                             <button type="submit" class="btn btn-primary px-4 rounded-3">
-                                <i class="fas fa-save me-1"></i> Save Booking
+                                <i class="fas fa-save me-1"></i> @viewLocalizer["create"]
                             </button>
                         </div>
                     </form>

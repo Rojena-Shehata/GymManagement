@@ -119,7 +119,7 @@ namespace GymManagementBLL.Services.Classes
                 var activePlan=_unitOfWork.GetRepository<Plan>().GetById(activeMemberShip.PlanId);
                 memberViewModel.PlanName = activePlan?.Name;
                 memberViewModel.MembershipStartDate=activeMemberShip.CreatedAt.ToShortDateString();
-                memberViewModel.MembershipStartDate=activeMemberShip.EndDate.ToShortDateString();
+                memberViewModel.MembershipEndDate = activeMemberShip.EndDate.ToShortDateString();
             }
             return memberViewModel;
         }

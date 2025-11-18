@@ -12,26 +12,30 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
     {
         public string Name { get; set; } = null!;
         public string? Photo { get; set; }
-        [Required(ErrorMessage = "Email is Required.")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address!")]
+
+        [Display(Name = "email"), Required(ErrorMessage = "required")]
+        [EmailAddress(ErrorMessage = "invalidEmail")]
+        [RegularExpression(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$",
+                                                ErrorMessage = "regexEmail")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; } = null!;
-        [Required(ErrorMessage = "Phone Number is required")]
-        [Phone(ErrorMessage = "Invalid Phone Number")]
-        [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "Phone Number must be a valid Egyptian Number")]
+        [Display(Name = "phone"), Required(ErrorMessage = "required")]
+        [Phone(ErrorMessage = "invalidPhone")]
+        [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "regexPhone")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; } = null!;
-        [Required(ErrorMessage = "Date Of Birth is Required")]
-        [DataType(DataType.Date)]
+
+        [Display(Name = "dateOfBirth"), Required(ErrorMessage ="required")]
+        [DataType(DataType.Date,ErrorMessage = "regex")]
         public DateOnly DateOfBirth { get; set; }
-        [Required(ErrorMessage = "Gender is required")]
+        [Display(Name = "gender"), Required(ErrorMessage = "required")]
         public Gender Gender { get; set; }
-        [Required(ErrorMessage = "Building Number is Required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Building Number must be greater than 0")]
+        [Display(Name = "buildingNumber"), Required(ErrorMessage = "required")]
+        [Range(1, int.MaxValue, ErrorMessage = "range", ConvertValueInInvariantCulture = true)]
         public int BuildingNumber { get; set; }
-        [Required(ErrorMessage = "Street is required")]
-        [StringLength(150, MinimumLength = 2, ErrorMessage = "street must be between 2 and 150 characters")]
-        [RegularExpression(@"^[A-Za-z0-9\s]+$", ErrorMessage = "Street Must Only Contain Spaces, Characters and Numbers")]
+        [Display(Name = "city"), Required(ErrorMessage = "required")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "stringLength")]
+        [RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "regexCity")]
         public string Street { get; set; } = null!;
         [Required(ErrorMessage = "City is required")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "City must be between 2 and 100 characters")]

@@ -56,7 +56,7 @@ namespace GymManagementBLL.Services.Classes
             {
                 MemberId = x.MemberId,
                 SessionId = x.SessionId,
-                BookingDate = $"{x.CreatedAt.Date.ToString("MMM dd yyyy")} at {x.CreatedAt.ToString("hh : mm tt")}",
+                BookingDate = $"{x.CreatedAt.Date.ToString("MMM dd yyyy")} , {x.CreatedAt.ToString("hh : mm tt")}",
                 MemberName = x.Member.Name,
                 Phone = x.Member.Phone,
                 IsAttended=x.IsAttend
@@ -76,7 +76,7 @@ namespace GymManagementBLL.Services.Classes
             {
                 MemberId = x.MemberId,
                 SessionId = x.SessionId,
-                BookingDate = $"{x.CreatedAt.Date.ToString("MMM dd yyyy")} at {x.CreatedAt.ToString("hh : mm tt")}",
+                BookingDate = $"{x.CreatedAt.Date.ToString("MMM dd yyyy")} , {x.CreatedAt.ToString("hh : mm tt")}",
                 MemberName=x.Member.Name,
                 Phone=x.Member.Phone
 
@@ -91,7 +91,7 @@ namespace GymManagementBLL.Services.Classes
 
                 if (input is null)
                     return false;
-                if (!HasValidPhoneNumber(input.memberId, input.Memberphone))
+                if (!HasValidPhoneNumber(input.memberId, input.MemberPhone))
                     return false;
                 if (!HasActiveMemberShips(input.memberId))
                     return false;

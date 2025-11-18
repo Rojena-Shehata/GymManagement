@@ -2,6 +2,7 @@
 using GymManagementBLL.ViewModels.PlanViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace GymManagementPL.Controllers
 {
@@ -9,10 +10,12 @@ namespace GymManagementPL.Controllers
     public class PlanController : Controller
     {
         private readonly IPlanService _planService;
+        private readonly IStringLocalizer<PlanController> _stringLocalizer;
 
-        public PlanController(IPlanService planService)
+        public PlanController(IPlanService planService, IStringLocalizer<PlanController> stringLocalizer)
         {
             _planService = planService;
+            _stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
@@ -26,13 +29,13 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var plan=_planService.GetPlanById(id);
             if (plan is null)
             {
-                TempData["ErrorMessage"] = "Plan not found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["plan"]);
                 return RedirectToAction(nameof(Index));
             }
             return View(plan);
@@ -43,13 +46,13 @@ namespace GymManagementPL.Controllers
 
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var plan = _planService.GetPlanToUpdate(id);
             if (plan is null)
             {
-                TempData["ErrorMessage"] = "Plan not found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["plan"]);
                 return RedirectToAction(nameof(Index));
             }
             return View(plan);
@@ -59,22 +62,22 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             if(!ModelState.IsValid )
             {
-                ModelState.AddModelError("WrongData", "Check wrong data");
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
                 return View(nameof(Edit), input);
 
             }
             var isUpdated = _planService.UpdatePlan(id, input);
             if (isUpdated)
-                TempData["SuccessMessage"] = "Plan is Updated successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["session"], _stringLocalizer["updated"]); 
             else
-                TempData["ErrorMessage"] = "Plan failed to be updated";
-            
-                return RedirectToAction(nameof(Index));
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["session"], _stringLocalizer["updated"]); ;
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
@@ -82,14 +85,14 @@ namespace GymManagementPL.Controllers
         {
             if(id <= 0)
             {
-                TempData["ErrorMessage"] = "Id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var IsActivated=_planService.Activate(id);
             if (IsActivated)
-                TempData["SuccessMessage"] = "Plan Status Changed Successfullty";
+                TempData["SuccessMessage"] = _stringLocalizer["successMessagePlanStatus"];
             else
-                TempData["ErrorMessage"] = "Plan  Status failed to be Changed";
+                TempData["ErrorMessage"] = _stringLocalizer["errorMessagePlanStatus"];
 
             return RedirectToAction(nameof(Index));
             
@@ -104,15 +107,15 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("DataMissed", "Check Missing Data");
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
                 return View(nameof(Create),model);
             }
             var isCreated= _planService.CreatePlan(model);
-            if (isCreated)           
-                TempData["SuccessMessage"] = "Plan Created  Successfully";
-            
-            else           
-                TempData["ErrorMessage"] = "Plan Failed to  be  Created";
+            if (isCreated)
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["plan"], _stringLocalizer["created"]);
+
+            else
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["plan"], _stringLocalizer["created"]);
 
 
             return RedirectToAction(nameof(Index));

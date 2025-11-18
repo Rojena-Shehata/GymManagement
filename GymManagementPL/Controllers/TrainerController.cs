@@ -3,6 +3,7 @@ using GymManagementBLL.ViewModels.SessionViewModels;
 using GymManagementBLL.ViewModels.TrainerViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace GymManagementPL.Controllers
 {
@@ -10,10 +11,12 @@ namespace GymManagementPL.Controllers
     public class TrainerController : Controller
     {
         private readonly ITrainerService _trainerService;
+        private readonly IStringLocalizer<TrainerController> _stringLocalizer;
 
-        public TrainerController(ITrainerService trainerService)
+        public TrainerController(ITrainerService trainerService, IStringLocalizer<TrainerController> stringLocalizer)
         {
             _trainerService = trainerService;
+            _stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
@@ -26,13 +29,13 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Trainer id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["theTrainer"]);
                 return RedirectToAction(nameof(Index));
             }
             var trainer=_trainerService.GetTrainerDetails(id);
             if(trainer is null)
             {
-                TempData["ErrorMessage"] = "Trainer not found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["theTrainer"]);
                 return RedirectToAction(nameof(Index));
             }
             return View(nameof(TrainerDetails), trainer);
@@ -47,19 +50,19 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("DataMissed", "Check Missing Data");
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
                 return View(nameof(Create), model);
             }
             var IsCreated = _trainerService.CreatTrainer(model);
             if (IsCreated)
             {
 
-                TempData["SuccessMessage"] = "Trainer is Created, Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["theTrainer"], _stringLocalizer["created"]);
                 return RedirectToAction(nameof(Index), model);
             }
             else
             {
-                ModelState.AddModelError("EmailOrPhoneExistError", "Email or phone number already exist");
+                ModelState.AddModelError("EmailOrPhoneExistError", _stringLocalizer["errors.emailOrPhoneExists"]);
                 return View(nameof(Create), model);
             }
         }
@@ -68,13 +71,13 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Trainer id must be greater than 0";
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
                 return RedirectToAction(nameof(Index));
             }
             var trainer=_trainerService.GetTrainerModelToUpdate(id);
             if(trainer is null)
             {
-                TempData["ErrorMessage"] = "Trainer not found";
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -92,12 +95,12 @@ namespace GymManagementPL.Controllers
             var IsUpdated = _trainerService.UpdateTrainerData(id, model);
             if (IsUpdated)
             {
-                TempData["SuccessMessage"] = "Trainer Data Updated Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["theTrainer"], _stringLocalizer["updated"]); ;
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                TempData["ErrorMessage"] = "Trainer failed to be Updated";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["theTrainer"], _stringLocalizer["updated"]);
                 return RedirectToAction(nameof(Index), model);
             }
 
@@ -107,13 +110,13 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Trainer id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var trainer=_trainerService.GetTrainerDetails(id);
             if (trainer is null)
             {
-                TempData["ErrorMessage"] = "Trainer Not Found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["theTrainer"]);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -125,16 +128,17 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Trainer id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var isDeleted = _trainerService.RemoveTrainer(id);
             if (isDeleted)
-                TempData["ErrorMessage"] = "Trainer Deleted Sucessfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["theTrainer"], _stringLocalizer["deleted"]);
             else
-                TempData["ErrorMessage"] = "Trainer Faild To Be Deleted";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["theTrainer"], _stringLocalizer["deleted"]);
+            
 
-            return View(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
 
        

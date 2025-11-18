@@ -9,10 +9,13 @@ namespace GymManagementDAL.Entities.Enums
 {
     public enum Specialties
     {
-        [Display(Name ="General Fitness")]
+        [Display(Name = "generalFitness")]
         GeneralFitness = 1,
+        [Display(Name = "yoga")]
         Yoga,
+        [Display(Name = "boxing")]
         Boxing,
+        [Display(Name = "crossFit")]
         CrossFit
     }
 }

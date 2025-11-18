@@ -6,7 +6,9 @@
 
 
 <header class="mb-4">
-    <h3 class="text-primary-color">Add Member</h3>
+    <h3 class="text-primary-color">
+        @viewLocalizer["addMember"]
+    </h3>
 </header>
 @Html.ValidationMessage("DataMissed", new {@class="text-danger"})
 @Html.ValidationMessage("EmailOrPhoneExistError", new { @class = "text-danger" })
@@ -17,13 +19,13 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="member-tab" data-bs-toggle="tab"
                     data-bs-target="#member-info" type="button" role="tab">
-                Member Info
+                @viewLocalizer["memberInfo"]
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="health-tab" data-bs-toggle="tab" data-bs-target="#health-info"
                     type="button" role="tab">
-                Health Data
+                @viewLocalizer["healthData"]
             </button>
         </li>
     </ul>
@@ -35,7 +37,7 @@
         <div class="tab-pane fade show active" id="member-info" role="tabpanel"
              aria-labelledby="member-tab">
             <div class="section-header mb-3">
-                <h5 class="text-primary fw-bold">Personal Information</h5>
+                <h5 class="text-primary fw-bold"> @viewLocalizer["personalInformation"]</h5>
                 <hr class="mt-2">
             </div>
             <div class="row g-3">
@@ -45,38 +47,38 @@
                         <img id="photoPreview" src="#" alt="Photo Preview" style="max-width: 200px; display: none;"
                              class="img-thumbnail" />
                     </div>
-                    <label asp-for="Photo" class="control-label">Profile Photo <span class="text-danger">*</span></label>
-                    <input asp-for="Photo" type="file" class="form-control" accept="image/*" id="photoInput" required />
+                    <label asp-for="Photo" class="control-label">@viewLocalizer["profilePhoto"] <span class="text-danger">*</span></label>
+                    <input asp-for="Photo" type="file" class="form-control" accept="image/*" id="photoInput" />
                     <span asp-validation-for="Photo" class="text-danger"></span>
-                    <small class="form-text text-muted">Max size: 5 MB. Allowed types: JPG, PNG, JPEG (Required)</small>
+                    <small class="form-text text-muted">@viewLocalizer["maxFileRule"]</small>
                 </div>
                 <div class="col-12 col-md-6">
-                    <label asp-for="Name" class="form-label">Name</label>
+                    <label asp-for="Name" class="form-label">@viewLocalizer["name"]</label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <label asp-for="Email" class="form-label">Email</label>
+                    <label asp-for="Email" class="form-label"> @viewLocalizer["email"]</label>
                     <input asp-for="Email" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <label asp-for="Phone" class="form-label">Phone</label>
+                    <label asp-for="Phone" class="form-label"> @viewLocalizer["phone"]</label>
                     <input asp-for="Phone" class="form-control" />
                     <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-md-6">
-                    <label asp-for="DateOfBirth" class="form-label">DateOfBirth</label>
+                    <label asp-for="DateOfBirth" class="form-label"> @viewLocalizer["dateOfBirth"]</label>
                     <input asp-for="DateOfBirth" class="form-control" />
                     <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <label asp-for="Gender" class="form-label">Gender</label>
+                    <label asp-for="Gender" class="form-label"> @viewLocalizer["gender"]</label>
                     <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"  class="form-select">
-                        <option value="">-- Select Gender --</option>                       
+                        <option value="">-- @viewLocalizer["selectGender"] --</option>                       
                     </select>
                     <span asp-validation-for="Gender" class="text-danger"></span>
                 </div>
@@ -84,24 +86,24 @@
             </div>
             @*Address info*@
             <div class="section-header mb-3 mt-4">
-                <h5 class="text-primary fw-bold">Address Information</h5>
+                <h5 class="text-primary fw-bold">@viewLocalizer["addressInformation"]</h5>
                 <hr class="mt-2">
             </div>
             <div class="row g-3">
 
                 <div class="col-12 col-md-6">
-                    <label asp-for="BuildingNumber" class="form-label">BuildingNumber</label>
-                    <input asp-for="BuildingNumber" class="form-control" />
+                    <label asp-for="BuildingNumber" class="form-label"> @viewLocalizer["buildingNumber"]</label>
+                    <input asp-for="BuildingNumber" class="form-control" required/>
                     <span asp-validation-for="BuildingNumber" class="text-danger"></span>
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <label asp-for="Street" class="form-label">Street</label>
+                    <label asp-for="Street" class="form-label"> @viewLocalizer["street"]</label>
                     <input asp-for="Street" class="form-control" />
                     <span asp-validation-for="Street" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-md-6">
-                    <label asp-for="City" class="form-label">City</label>
+                    <label asp-for="City" class="form-label"> @viewLocalizer["city"]</label>
                     <input asp-for="City" class="form-control" />
                     <span asp-validation-for="City" class="text-danger"></span>
                 </div>
@@ -114,22 +116,22 @@
         <div class="tab-pane fade" id="health-info" role="tabpanel" aria-labelledby="health-tab">
             <div class="row g-3">
                 <div class="col-12 col-md-6">
-                    <label asp-for="HealthRecord.Height" class="form-label">Height</label>
+                    <label asp-for="HealthRecord.Height" class="form-label"> @viewLocalizer["height"]</label>
                     <input asp-for="HealthRecord.Height" class="form-control" />
                     <span asp-validation-for="HealthRecord.Height" class="text-danger"></span>
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <label asp-for="HealthRecord.Weight" class="form-label">Weight</label>
-                    <input asp-for="HealthRecord.Weight" class="form-control" />
+                    <label asp-for="HealthRecord.Weight" class="form-label"> @viewLocalizer["weight"]</label>
+                    <input asp-for="HealthRecord.Weight" class="form-control"required />
                     <span asp-validation-for="HealthRecord.Weight" class="text-danger"></span>
 
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <label asp-for="HealthRecord.BloodType" class="form-label">Blood Type</label>
+                    <label asp-for="HealthRecord.BloodType" class="form-label"> @viewLocalizer["bloodType"]</label>
                     <select asp-for="HealthRecord.BloodType" class="form-select">
-                        <option value="">Select</option>
+                        <option value=""> @viewLocalizer["select"]</option>
                         <option>A+</option>
                         <option>A-</option>
                         <option>B+</option>
@@ -142,7 +144,7 @@
                     <span asp-validation-for="HealthRecord.BloodType" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-md-6">
-                    <label asp-for="HealthRecord.Note" class="form-label">Note</label>
+                    <label asp-for="HealthRecord.Note" class="form-label">@viewLocalizer["note"]</label>
                     <input asp-for="HealthRecord.Note" class="form-control" />
                     <span asp-validation-for="HealthRecord.Note" class="text-danger"></span>
                 </div>
@@ -152,11 +154,11 @@
 
     <footer class="d-flex justify-content-end gap-3 mt-4">
         <a asp-controller="Member" asp-action="Index" class="btn btn-outline-secondary px-4">
-            <i class="bi bi-arrow-left me-2"></i> Back to List
+            <i class="bi bi-arrow-left me-2"></i>  @viewLocalizer["backToList"]
         </a>
 
         <button type="submit" class="btn btn-primary px-4">
-            <i class="bi bi-plus-circle me-2"></i> Add
+            <i class="bi bi-plus-circle me-2"></i>  @viewLocalizer["add"]
         </button>
     </footer>
 

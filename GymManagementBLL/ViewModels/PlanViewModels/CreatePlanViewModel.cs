@@ -9,17 +9,17 @@ namespace GymManagementBLL.ViewModels.PlanViewModels
 {
     public class CreatePlanViewModel
     {
-        [Required(ErrorMessage ="Name is required")]
-        [RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "Only English letters and spaces are allowed.")]
-        [MaxLength(50,ErrorMessage ="Name length can't exceed 50 characters")]
+        [Display(Name = "planName"), Required(ErrorMessage = "required")]
+        //[RegularExpression(@"^([A-Za-z\s]+|[\u0600-\u06FF\s]+)$", ErrorMessage = "nameRegex")]
+        [StringLength(50, ErrorMessage = "stringLengthMax")]
         public string PlanName { get; set; } = null!;
-        [Required(ErrorMessage ="Description is Required")]
-        [MaxLength(200, ErrorMessage = "Name length can't exceed 200 characters")]
+        [Display(Name = "description"), Required(ErrorMessage = "required")]
+        [StringLength(200, ErrorMessage = "stringLengthMax")]
         public string Description { get; set; } = null!;
-        [Required(ErrorMessage = "Duration days is Required")]
-        [Range(1,365,ErrorMessage ="Please, enter days between 1 and 365")]
+        [Display(Name = "durationDays"), Required(ErrorMessage = "required")]
+        [Range(1,365, ErrorMessage = "range", ConvertValueInInvariantCulture = true)]
         public int DurationDays { get; set; }
-        [Required(ErrorMessage ="Price is required")]      
+        [Display(Name = "price"), Required(ErrorMessage = "required")]
         public decimal Price { get; set; }
         
         public bool IsActive =>true;

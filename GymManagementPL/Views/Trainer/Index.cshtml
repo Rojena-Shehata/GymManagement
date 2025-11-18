@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TrainerViewModel>
+﻿
+@model IEnumerable<TrainerViewModel>
 @{
     ViewData["Title"] = "Trainers";
 }
@@ -22,12 +23,12 @@
 <div class="container">
     <header class="d-flex justify-content-between mt-5 mb-4 align-items-center">
         <div>
-            <h2 class="text-primary-color mb-0">Our Trainers</h2>
-            <p class="text-muted">Professional fitness instructors</p>
+            <h2 class="text-primary-color mb-0">@viewLocalizer["trainersTitle"]</h2>
+            <p class="text-muted">@viewLocalizer["subtitle"]</p>
         </div>
         <a asp-controller="Trainer" asp-action="Create"
            class="btn btn-fill fw-medium rounded-pill px-4 py-3">
-            <i class="bi bi-plus-lg me-2"></i>Add Trainer
+            <i class="bi bi-plus-lg me-2"></i>@viewLocalizer["addTrainer"]
         </a>
     </header>
 
@@ -39,11 +40,11 @@
             <table class="table table-borderless">
                 <thead>
                     <tr>
-                        <th><span>Name</span></th>
-                        <th><span>Email</span></th>
-                        <th><span>Phone</span></th>
-                        <th><span>Specialization</span></th>
-                        <th><span>Action</span></th>
+                        <th><span>@viewLocalizer["name"]</span></th>
+                        <th><span>@viewLocalizer["email"]</span></th>
+                        <th><span>@viewLocalizer["phone"]</span></th>
+                        <th><span>@viewLocalizer["specialization"]</span></th>
+                        <th><span>@viewLocalizer["action"]</span></th>
                     </tr>
                 </thead>
 
@@ -72,7 +73,7 @@
                                             <a asp-controller="Trainer" asp-action="TrainerDetails" asp-route-id="@trainer.Id"
                                             class="dropdown-item d-flex align-items-center gap-3">
                                                 <i class="bi bi-eye text-primary-color"></i>
-                                                <span>View Details</span>
+                                                <span>@viewLocalizer["viewDetails"]</span>
                                             </a>
                                         </li>
                                         <li>
@@ -82,7 +83,7 @@
                                             <a asp-controller="Trainer" asp-action="Edit" asp-route-id="@trainer.Id"
                                             class="dropdown-item d-flex align-items-center gap-3">
                                                 <i class="bi bi-pencil text-primary-color"></i>
-                                                <span>Edit Details</span>
+                                                <span> @viewLocalizer["edit"]</span>
                                             </a>
                                         </li>
                                         <li>
@@ -92,7 +93,7 @@
                                             <a asp-controller="Trainer" asp-action="Delete" asp-route-Id="@trainer.Id"
                                             class="dropdown-item d-flex align-items-center gap-3 text-danger">
                                                 <i class="bi bi-trash"></i>
-                                                <span>Delete</span>
+                                                <span>@viewLocalizer["delete"]</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -111,8 +112,10 @@
 
         <div class="text-center py-5">
             <i class="bi bi-person-workspace display-1 text-muted"></i>
-            <h4 class="mt-3 text-muted">No Trainers Available</h4>
-            <p class="text-muted">Add your first trainer to get started</p>
+            <h4 class="mt-3 text-secondary">@viewLocalizer["noTrainers"]</h4>
+            <p class="text-muted">@viewLocalizer["addFirstTrainer"]</p>
+
+
         </div>
     }
 </div>

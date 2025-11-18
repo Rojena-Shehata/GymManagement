@@ -10,16 +10,14 @@ namespace GymManagementBLL.ViewModels.BookingViewModels
 {
     public class CreateBookingForSessionViewModel
     {
-        [Required(ErrorMessage = "Member is Required")]
-        [Display(Name = "Member")]
+        [Display(Name = "member"), Required(ErrorMessage = "required")]
         public int memberId { get; set; }
-        [Required(ErrorMessage = "Session is Required")]
-        [Display(Name = "UpComing Sessions")]
-        public int SessionId { get; set; } 
-        [Required(ErrorMessage = "Phone Number is required")]
-        [Phone(ErrorMessage = "Invalid Phone Number")]
-        [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "Phone Number must be a valid Egyptian Number")]
+        [Display(Name = "session"), Required(ErrorMessage = "required")]
+        public int SessionId { get; set; }
+        [Display(Name = "phone"), Required(ErrorMessage = "required")]
+        [Phone(ErrorMessage = "invalidPhone")]
+        [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "regexPhone")]
         [DataType(DataType.PhoneNumber)]
-        public string Memberphone { get; set; }
+        public string MemberPhone { get; set; } = null!;
     }
 }

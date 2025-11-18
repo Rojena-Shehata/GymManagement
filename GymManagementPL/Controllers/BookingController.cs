@@ -4,6 +4,7 @@ using GymManagementBLL.ViewModels.SessionViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 
 namespace GymManagementPL.Controllers
 {
@@ -11,10 +12,12 @@ namespace GymManagementPL.Controllers
     public class BookingController : Controller
     {
         private readonly IBookingService _bookingService;
+        private readonly IStringLocalizer<BookingController> _stringLocalizer;
 
-        public BookingController(IBookingService bookingService)
+        public BookingController(IBookingService bookingService, IStringLocalizer<BookingController> stringLocalizer)
         {
             _bookingService = bookingService;
+            _stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
@@ -27,6 +30,7 @@ namespace GymManagementPL.Controllers
         {
             if (sessionId <= 0)
             {
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return View();
             }
                 
@@ -49,14 +53,14 @@ namespace GymManagementPL.Controllers
         {
             if (sessionId <= 0||memberId<=0)
             {
-                TempData["ErrorMessage"] = "Id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"].Value);
                 return RedirectToAction(nameof(GetMembersForUpcomingSession), new { sessionId = sessionId });
             }
             var isCanceled = _bookingService.Cancel(sessionId, memberId);
             if (isCanceled)
-                TempData["SuccessMessage"] = " Successfully Canceled";
+                TempData["SuccessMessage"] = _stringLocalizer["cancelSuccess"].Value;
             else
-                TempData["Error"] = "Failed to Cancel";
+                TempData["Error"] = _stringLocalizer["cancelError"].Value;
 
             return RedirectToAction(nameof(GetMembersForUpcomingSession), new { sessionId =sessionId });
         }
@@ -81,16 +85,16 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("DataMissed", "Check missing data");
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"].Value);
                 LoadMembersForDropDown();
                 ViewBag.SessionId = input.SessionId;
                 return View(nameof(Create),input);
             }
             var isCreated = _bookingService.Create(input);
             if (isCreated)
-                TempData["SuccessMessage"] = "New Booking Added Successfullty";
+                TempData["SuccessMessage"] = _stringLocalizer["bookingCreateSuccess"].Value;
             else
-                TempData["ErrorMessage"]="Failed  To Add Booking";
+                TempData["ErrorMessage"] = _stringLocalizer["bookingCreateError"].Value;
             return RedirectToAction(nameof(GetMembersForUpcomingSession), new { sessionId = input.SessionId });
         }
 
@@ -99,14 +103,14 @@ namespace GymManagementPL.Controllers
         {
             if (sessionId <= 0 || memberId <= 0)
             {
-                TempData["ErrorMessage"] = "Id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"].Value);
                 return RedirectToAction(nameof(GetMembersForUpcomingSession), new { sessionId = sessionId });
             }
-            var isCanceled = _bookingService.Attendance(sessionId, memberId);
-            if (isCanceled)
-                TempData["SuccessMessage"] = " Successfully Attendance Status Changed";
+            var isAttended = _bookingService.Attendance(sessionId, memberId);
+            if (isAttended)
+                TempData["SuccessMessage"] = _stringLocalizer["attendanceStatusChangedSuccess"].Value;
             else
-                TempData["Error"] = "Failed To Change Attendance Status";
+                TempData["Error"] = _stringLocalizer["attendanceStatusChangedError"].Value;
             return RedirectToAction(nameof(GetMembersForOngoingSessions), new { sessionId = sessionId });
         }
 

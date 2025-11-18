@@ -1,8 +1,9 @@
 ﻿@{
     Layout = null;
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="@(isRTL ? "RTL" : "LTR")">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -204,19 +205,27 @@
             <div class="content">
                 <div class="error-icon">🚫</div>
                 <h1>
-                    Access <span class="error-highlight">Denied</span>
+                    @if (isRTL)
+                    {
+                        @viewLocalizer["denied"] <span class="error-highlight">@viewLocalizer["access"]</span>
+
+                    }
+                    else
+                    {                                      
+                        @viewLocalizer["access"] <span class="error-highlight">@viewLocalizer["denied"]</span>
+                    }
                 </h1>
                 <p class="error-message">
-                    We're sorry, but you don't have permission to access this resource. Your current user role or membership status doesn't grant you access to this section.
+                    @viewLocalizer["accessDeniedMessage1"]
                 </p>
                 <div class="error-code">
-                    Error Code: 403 - Forbidden Access
+                    @viewLocalizer["accessDeniedCode"]                   
                 </div>
                 <p class="error-message">
-                    If you believe this is an error or need elevated permissions, please contact the system administrator or your membership manager for assistance.
+                    @viewLocalizer["accessDeniedMessage2"]
                 </p>
                 <div class="button-group">
-                    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Return to Home</a>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">@viewLocalizer["returnHomeButton"]</a>
                 </div>
             </div>
 

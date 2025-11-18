@@ -2,9 +2,11 @@
 @model LoginViewModel
 @{
     Layout = null;
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="@(isRTL ? "RTL" : "LTR")">
 
 <head>
     <meta charset="utf-8" />
@@ -14,6 +16,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/AuthStyle.css" />
+    @if (isRTL)
+    {
+        <link rel="stylesheet" href="~/lib/bootstrap//dist/css/bootstrap.rtl.min.css" />
+
+    }
        <style>
 
         .gym-info-section {
@@ -30,67 +37,92 @@
 </head>
 
 <body>
+
     <div class="login-container">
+
         <div class="login-form-section">
+
+            <div class="m-1 text-center">
+                <partial name="_SelectLanguage" />
+            </div>
             <div class="logo-section">
                 <div class="logo-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-                <h1 class="brand-name">Fitness Gym</h1>
-                <p class="brand-subtitle">Gym Management System</p>
+                <h1 class="brand-name">
+                    @viewLocalizer["brandName"]
+                    </h1>
+                <p class="brand-subtitle">@viewLocalizer["brandSubtitle"]</p>
             </div>
 
-            <h2 class="login-title">Admin Login</h2>
-            <p class="login-subtitle">Welcome back! Please login to your account</p>
+
+            <h2 class="login-title">
+                @viewLocalizer["loginTitle"]</h2>
+            <p class="login-subtitle">
+                @viewLocalizer["loginSubtitle"]</p>
 
             <form asp-action="Login" asp-controller="Account" method="post" id="loginForm">
                 @Html.ValidationMessage("InvalidLogin", new { @class = "text-danger small" })
 
                 <div class="form-floating">
                     <input asp-for="Email" class="form-control" id="floatingEmail" placeholder="admin@example.com" autocomplete="username" />
-                    <label for="floatingEmail"><i class="bi bi-envelope me-2"></i>Email Address</label>
+                    <label for="floatingEmail"><i class="bi bi-envelope me-2"></i>@viewLocalizer["emailAddress"]</label>
                     <span asp-validation-for="Email" class="text-danger small"></span>
                 </div>
 
                 <div class="form-floating">
                     <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="current-password" />
-                    <label for="floatingPassword"><i class="bi bi-lock-fill me-2"></i>Password</label>
+                    <label for="floatingPassword">
+                        <i class="bi bi-lock-fill me-2"></i>@viewLocalizer["password"]
+                    </label>
                     <span asp-validation-for="Password" class="text-danger small"></span>
                 </div>
 
                 <div class="form-check mb-3">
                     <input asp-for="RememberMe" class="form-check-input" type="checkbox" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">
-                        Remember me for 24 hours
+                        @viewLocalizer["rememberMe"]
                     </label>
                 </div>
 
                 <button type="submit" class="btn btn-login" id="loginBtn">
-                    <i class="bi bi-box-arrow-in-right me-2"></i>Login to Dashboard
+                    <i class="bi bi-box-arrow-in-right me-2"></i>@viewLocalizer["loginButton"]
+
                 </button>
             </form>
         </div>
 
         <div class="gym-info-section">
+
             <div class="gym-content">
                 <div class="gym-icon fs-1 mb-3">💪</div>
-                <h2 class="gym-title">Your body can <span style="color:#ffba08;">stand</span><br>almost anything</h2>
+                <h2 class="gym-title">
+                    @viewLocalizer["heroTitlePart1"]<span style="color:#ffba08;">
+                        @viewLocalizer["heroTitlePart2"]
+                    </span><br>@viewLocalizer["anything"]
+                </h2>
                 <p class="gym-description">
-                    It's your mind that needs convincing. Push past your limits,<br>
-                    stay committed, and watch your body transform into<br>
-                    a powerhouse of strength and resilience.
-                </p>
+                    @viewLocalizer["gymDescriptionLine1"]<br />
+                    @viewLocalizer["gymDescriptionLine2"]<br />
+                    @viewLocalizer["gymDescriptionLine3"]
+</p>
 
                 <div class="stats-container">
                     <div class="stat-item">
                         <span class="stat-number">500+</span>
-                        <span class="stat-label">Members</span>
+                        <span class="stat-label">
+                            @viewLocalizer["members"]
+                        </span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">50+</span>
-                        <span class="stat-label">Trainers</span>
+                        <span class="stat-label">
+                            @viewLocalizer["trainers"]
+                        </span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support</span>
+                        <span class="stat-label">
+                            @viewLocalizer["support"]
+                        </span>
                     </div>
                 </div>
             </div>
