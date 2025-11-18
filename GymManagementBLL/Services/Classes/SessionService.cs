@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GymManagementBLL.Services.Interfaces;
+using GymManagementBLL.ViewModels;
 using GymManagementBLL.ViewModels.SessionViewModels;
 using GymManagementDAL.Entities;
 using GymManagementDAL.Repositories.Interfaces;
@@ -58,6 +59,7 @@ namespace GymManagementBLL.Services.Classes
                 session.AvailableSlots =session.Capacity - _unitOfWork.SessionRepository.GetCountOfBookingSlots(session.Id);
             }
             return mappedSessions;
+
         }
 
         public SessionViewModel? GetSessionById(int sessionId)
@@ -124,11 +126,11 @@ namespace GymManagementBLL.Services.Classes
 
 
 
-        public IEnumerable<CategorySelectViewModel> GetCategoriesForDropDown()
+        public IEnumerable<IdNameViewModelForDropDown> GetCategoriesForDropDown()
         {
             var categories = _unitOfWork.GetRepository<Category>().GetAll();
             if (categories is null) return [];
-            return categories.Select(c => new CategorySelectViewModel
+            return categories.Select(c => new IdNameViewModelForDropDown
             {
                 Id=c.Id,
                 Name=c.CategoryName
@@ -136,12 +138,12 @@ namespace GymManagementBLL.Services.Classes
 
         }
 
-        public IEnumerable<TrainerSelectViewModel> GetTrainersForDropDown()
+        public IEnumerable<IdNameViewModelForDropDown> GetTrainersForDropDown()
         {
 
             var trainers = _unitOfWork.GetRepository<Trainer>().GetAll();
             if (trainers is null) return [];
-            return trainers.Select(c => new TrainerSelectViewModel
+            return trainers.Select(c => new IdNameViewModelForDropDown
             {
                 Id = c.Id,
                 Name = c.Name

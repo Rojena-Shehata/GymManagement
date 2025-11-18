@@ -45,6 +45,17 @@ namespace GymManagementDAL.Repositories.Classes
             return _context.Set<TEntity>().AsNoTracking().ToList();
         }
 
+        public IEnumerable<TResult> GetAll<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>> condition = null!)
+        {
+            if(condition is not null)
+            {
+                var allwithCondition=_context.Set<TEntity>().AsNoTracking().Where(condition).Select(selector);
+                return allwithCondition;
+            }
+            var all=_context.Set<TEntity>().AsNoTracking().Select(selector);
+            return all;
+        }
+
         public TEntity? GetById(int id) =>_context.Set<TEntity>().Find(id);
         public TEntity? GetById(Expression<Func<TEntity,bool> >condition)
         {

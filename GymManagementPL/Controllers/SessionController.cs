@@ -1,18 +1,24 @@
 ﻿using GymManagementBLL.Services.Classes;
 using GymManagementBLL.Services.Interfaces;
 using GymManagementBLL.ViewModels.SessionViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 
 namespace GymManagementPL.Controllers
 {
+    [Authorize]
     public class SessionController : Controller
     {
         private readonly ISessionService _sessionService;
+        private readonly IStringLocalizer _stringLocalizer;
 
-        public SessionController(ISessionService sessionService)
+        public SessionController(ISessionService sessionService, IStringLocalizer<SessionController> stringLocalizer)
         {
             _sessionService = sessionService;
+            _stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
@@ -32,7 +38,7 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("DataMissed", "Check Missing Data");
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
                 LoadTrainersForDropDown();
                 LoadCategoriesForDropDown();
                 return View(nameof(Create));
@@ -40,7 +46,7 @@ namespace GymManagementPL.Controllers
             var isCreated=_sessionService.CreateSession(input);
             if(isCreated)
             {
-                TempData["SuccessMessage"] = "Session Created Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["session"], _stringLocalizer["created"]);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -49,7 +55,8 @@ namespace GymManagementPL.Controllers
             {
                 LoadTrainersForDropDown();
                 LoadCategoriesForDropDown();
-                ModelState.AddModelError("Failed", "Failed to create session");
+                ModelState.AddModelError("Failed", string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["session"], _stringLocalizer["created"]));
+
                 return View("Create",input);
 
             }
@@ -61,13 +68,13 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "id must be greater thann 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var   session =_sessionService.GetSessionToUpdate(id);
             if(session is null)
             {
-                TempData["ErrorMessage"] = "Session not found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["session"]);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -81,23 +88,24 @@ namespace GymManagementPL.Controllers
             if (id <= 0)
             {
 
-                TempData["ErrorMessage"] = "Trainer id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             if (!ModelState.IsValid)
             {
 
-                ModelState.AddModelError("Failed", "Session failed to be Updated");
+                ModelState.AddModelError("Failed", string.Format(_stringLocalizer["ActionError"], _stringLocalizer["session"], _stringLocalizer["updated"]));
+
                 return View(nameof(Edit));
             }
             var isUpdated=_sessionService.UpdateSession(id,input);
             if (isUpdated)
             {
-                TempData["SuccessMessage"] = "Session Updated Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["session"], _stringLocalizer["updated"]); ;
 
             }
             else
-                TempData["Errormessage"] = "Session failed to be Updated";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["session"], _stringLocalizer["updated"]); ;
 
             return RedirectToAction(nameof(Index));
 
@@ -108,13 +116,13 @@ namespace GymManagementPL.Controllers
         {
             if(id <= 0)
             {
-                TempData["ErrprMessage"] = "Id must  ne greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var  session=_sessionService.GetSessionById(id);
             if(session is null)
             {
-                TempData["ErrorMessage"] = "Session not Found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["session"]);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -125,14 +133,14 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
 
             var session = _sessionService.GetSessionById(id);
             if (session is null)
             {
-                TempData["ErrorMessage"] = "Session Not Found";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.notFound"], _stringLocalizer["session"]);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -140,19 +148,20 @@ namespace GymManagementPL.Controllers
             return View(nameof(Delete));
         }
 
+        [HttpPost]
         public IActionResult DeleteConfirmed(int id)
         {
 
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "id must be greater than 0";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
                 return RedirectToAction(nameof(Index));
             }
             var isDeleted = _sessionService.RemoveSession(id);
             if (isDeleted)
-                TempData["SuccessMessage"] = "Session Deleted Successfully";
+                TempData["SuccessMessage"] = string.Format(_stringLocalizer["ActionSuccess"], _stringLocalizer["session"], _stringLocalizer["deleted"]);
             else
-                TempData["ErrorMessage"] = "Session failed to be deleted";
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["ActionError"], _stringLocalizer["session"], _stringLocalizer["deleted"]);
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,14 +1,14 @@
 ﻿@model UpdateSessionViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Session";
 }
 
 
 <div class="container mt-4">
     <header class="mb-4">
-        <h3 class="text-primary-color">Edit Session</h3>
-        <p class="text-muted">Update session information</p>
+        <h3 class="text-primary-color">@viewLocalizer["editSession"]</h3>
+        <p class="text-muted">@viewLocalizer["updateSessionInfo"]</p>
     </header>
     @Html.ValidationMessage("Data","Check entered data")
     <form asp-action="Edit" method="post">
@@ -19,24 +19,24 @@
 
                         <!-- Session Information -->
                         <div class="section-header mb-3">
-                            <h5 class="text-primary fw-bold">Session Information</h5>
+                            <h5 class="text-primary fw-bold">@viewLocalizer["sessionInformation"]</h5>
                             <hr class="mt-2">
                         </div>
 
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label asp-for="TrainerId" class="form-label fw-semibold">
-                                    Trainer <span class="text-danger">*</span>
+                                    @viewLocalizer["theTrainer"] <span class="text-danger">*</span>
                                 </label>
                                 <select asp-for="TrainerId" asp-items="@ViewBag.Trainers" class="form-select">
-                                    <option value="">Select Trainer</option>
+                                    <option value="">@viewLocalizer["selectTrainer"]</option>
                                 </select>
                                 <span asp-validation-for="TrainerId" class="text-danger"></span>
                             </div>
 
                             <div class="col-12">
                                 <label asp-for="Description" class="form-label fw-semibold">
-                                    Description <span class="text-danger">*</span>
+                                    @viewLocalizer["description"] <span class="text-danger">*</span>
                                 </label>
                                 <textarea asp-for="Description" class="form-control" rows="3"></textarea>
                                 <span asp-validation-for="Description" class="text-danger"></span>
@@ -45,14 +45,14 @@
 
                         <!-- Date & Time -->
                         <div class="section-header mb-3">
-                            <h5 class="text-primary fw-bold">Date & Time</h5>
+                            <h5 class="text-primary fw-bold">@viewLocalizer["dateTime"]</h5>
                             <hr class="mt-2">
                         </div>
 
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label asp-for="StartDate" class="form-label fw-semibold">
-                                    Start Date & Time <span class="text-danger">*</span>
+                                    @viewLocalizer["startDateTime"] <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="StartDate" type="datetime-local" class="form-control" />
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
@@ -60,7 +60,7 @@
 
                             <div class="col-md-6">
                                 <label asp-for="EndDate" class="form-label fw-semibold">
-                                    End Date & Time <span class="text-danger">*</span>
+                                    @viewLocalizer["endDateTime"] <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="EndDate" type="datetime-local" class="form-control" />
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
@@ -69,10 +69,10 @@
 
                         <div class="d-flex justify-content-between mt-4 pt-3 border-top">
                             <a asp-action="Index" class="btn btn-outline">
-                                <i class="bi bi-arrow-left me-1"></i>Cancel
+                                <i class="bi bi-arrow-left me-1"></i>@viewLocalizer["cancel"]
                             </a>
                             <button type="submit" class="btn btn-fill">
-                                <i class="bi bi-check-lg me-1"></i>Update Session
+                                <i class="bi bi-check-lg me-1"></i>@viewLocalizer["updateSession"]
                             </button>
                         </div>
                     </div>

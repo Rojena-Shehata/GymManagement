@@ -9,12 +9,14 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
 {
     public class HealthRecordViewModel
     {
-        [Range(0.1,300,ErrorMessage ="Height must be greater than 0 ")]
+        [Display(Name = "height"),Required(ErrorMessage ="required")]
+        [Range(0.1,300,ErrorMessage = "range", ConvertValueInInvariantCulture=true)]
         public decimal Height { get; set; }
-        [Range(0.1,500,ErrorMessage ="Weight must be greater than 0 ")]
+        [Display(Name = "weight"), Required(ErrorMessage = "required")]
+        [Range(0.1,500,ErrorMessage = "range", ConvertValueInInvariantCulture=true)]
         public decimal Weight { get; set; }
-        [Required(ErrorMessage ="Blood Type Is Required")]
-        [StringLength(3,ErrorMessage ="Blood Type Must be 3 characters or less")]
+        [Display(Name = "bloodType"), Required(ErrorMessage ="required")]
+        [StringLength(3,ErrorMessage = "stringLengthMax")]
         public string BloodType { get; set; } = null!;
         public string? Note { get; set; }
     }

@@ -1,6 +1,8 @@
 ﻿@using GymManagementBLL.ViewModels.AnalyticsViewModels
 @model AnalyticsViewModel
 
+@inject IViewLocalizer viewLocalizer
+
 
  <div class="container">
         <main role="main" class="pb-3">
@@ -9,18 +11,16 @@
                     <div class="info mt-4">
                         <header class="text-black-alternative">
                             <h2 class="fw-bolder display-2 mb-4">
-                                Your body can
-                                <span class="text-primary-color">stand almost</span> anything
+                            @viewLocalizer["heroTitlePart1"]
+
+                            <span class="text-primary-color">
+                                @viewLocalizer["heroTitlePart2"]
+                            </span> @viewLocalizer["anything"]
                             </h2>
 
                             <p class="mb-6">
-                                It's your mind that needs convincing. Push past your limits,
-                                stay <br />
-                                committed, and watch as your body transform into powerhouse of
-                                <br />
-                                strength and resilience. Start your journey today & truly
-                                capable of!
-                            </p>
+                            @viewLocalizer["heroParagraph"]                          
+                        </p>
                         </header>
                         
                         <div class="stats-bar">
@@ -28,19 +28,19 @@
                                 <div class="col-4">
                                     <div class="stat">
                                         <span class="fw-bolder fs-5 d-block mb-1">@Model.TotalMembers</span>
-                                        <h3 class="fs-5 fw-normal">Total Members</h3>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["totalMembers"]</h3>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="stat">
                                         <span class="fw-bolder fs-5 d-block mb-1">@Model.ActiveMembers</span>
-                                        <h3 class="fs-5 fw-normal">Active Members</h3>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["activeMembers"]</h3>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="stat">
                                         <span class="fw-bolder fs-5 d-block mb-1">@Model.Trainers</span>
-                                        <h3 class="fs-5 fw-normal">Trainers</h3>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["trainers"]</h3>
                                     </div>
                                 </div>
                             </div>
@@ -48,19 +48,19 @@
                                 <div class="col-4">
                                     <div class="stat">
                                         <span class="fw-bolder fs-5 d-block mb-1">@Model.UpcomingSessions</span>
-                                        <h3 class="fs-5 fw-normal">Upcoming Sessions</h3>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["upcomingSessions"]</h3>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="stat">
                                         <span class="fw-bolder fs-5 d-block mb-1">@Model.OngoingSessions</span>
-                                        <h3 class="fs-5 fw-normal">Ongoing Sessions</h3>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["ongoingSessions"]</h3>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="stat">
                                         <span class="fw-bolder fs-5 d-block mb-1">@Model.CompletedSessions</span>
-                                        <h3 class="fs-5 fw-normal">Completed Sessions</h3>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["completedSessions"]</h3>
                                     </div>
                                 </div>
                             </div>
@@ -68,11 +68,11 @@
 
                         <div class="buttons my-4">
                             <button class="get-started bg-primary-color text-white btn rounded-5 fw-medium px-3 py-2 me-5 border-2 border-primary-color">
-                                Get Started
+                            @viewLocalizer["getStarted"]
                             </button>
 
                             <button class="explore-more border-primary-color btn rounded-5 fw-medium px-3 py-2 border-2 text-primary-color fw-medium">
-                                Explore More
+                                @viewLocalizer["exploreMore"]
                             </button>
                         </div>
                     </div>
@@ -87,11 +87,11 @@
 
             <div class="bar bg-primary-color d-flex py-4 text-white fw-bolder align-items-center">
                 <p class="py-0 my-0 overflow-hidden text-nowrap">
-                    outdoor & online trainers
-                    <img src="~/images/star.svg" alt="star icon" /> personal training
-                    <img src="~/images/star.svg" alt="star icon" /> live classes
-                    <img src="~/images/star.svg" alt="star icon" /> personal trainers
-                    <img src="~/images/star.svg" alt="star icon" /> personal training
+                @viewLocalizer["scrollingHighlight1"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight2"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight3"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight4"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight5"]
                 </p>
             </div>
 
@@ -120,79 +120,43 @@
                             <div class="col-12 col-lg-6">
                                 <div class="title d-flex justify-content-start align-items-start gap-2">
                                     <img class="" src="~/images/dumbbell.jpg" alt="dumbbell icon" />
-                                    <h2 class="text-primary-color fs-5">About Us</h2>
+                                <h2 class="text-primary-color fs-5">@viewLocalizer["aboutUsTitle"]</h2>
                                 </div>
 
                                 <header>
                                     <p class="fw-bolder display-6 mb-4">
-                                        EMPOWERING YOU TO ACHIEVE
+                                    @viewLocalizer["aboutMainHeading"]
                                         <span class="text-primary-color">YOUR FITNESS</span> GOALS
                                     </p>
                                     <p class="text">
-                                        We believe fitness is more than just a workout—it's a
-                                        lifestyle. With top-of- the-line facilities, certified
-                                        trainers, and a supportive community, we're here to inspire
-                                        and guide you every step of the way.
+                                    @viewLocalizer["aboutText"]
                                     </p>
                                 </header>
 
                                 <div class="features">
                                     <div class="row row-cols-1 row-cols-sm-2 gx-3 gy-5">
-                                        <div class="feature">
+                                    @for(int i = 0; i < 4; i++)
+                                    {
+                                        
+                                    
+                                    <div class="feature">
                                             <div class="inner">
                                                 <div class="title d-flex gap-2">
                                                     <img src="~/images/feature icon.jpg" alt="icon" />
-                                                    <h3 class="fw-bold">Personal Trainer</h3>
+                                                <h3 class="fw-bold">@viewLocalizer["personalTrainerTitle"]</h3>
                                                 </div>
                                                 <div class="info">
-                                                    <p>Achieve your fitness goals with the</p>
-                                                    <p>guidance of our certified trainers.</p>
+                                                <p>@viewLocalizer["personalTrainerLine1"]</p>
+                                                <p>@viewLocalizer["personalTrainerLine2"]</p>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="feature">
-                                            <div class="inner">
-                                                <div class="title d-flex gap-2">
-                                                    <img src="~/images/feature icon.jpg" alt="icon" />
-                                                    <h3 class="fw-bold">Personal Trainer</h3>
-                                                </div>
-                                                <div class="info">
-                                                    <p>Achieve your fitness goals with the</p>
-                                                    <p>guidance of our certified trainers.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="feature">
-                                            <div class="inner">
-                                                <div class="title d-flex gap-2">
-                                                    <img src="~/images/feature icon.jpg" alt="icon" />
-                                                    <h3 class="fw-bold">Personal Trainer</h3>
-                                                </div>
-                                                <div class="info">
-                                                    <p>Achieve your fitness goals with the</p>
-                                                    <p>guidance of our certified trainers.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="feature">
-                                            <div class="inner">
-                                                <div class="title d-flex gap-2">
-                                                    <img src="~/images/feature icon.jpg" alt="icon" />
-                                                    <h3 class="fw-bold">Personal Trainer</h3>
-                                                </div>
-                                                <div class="info">
-                                                    <p>Achieve your fitness goals with the</p>
-                                                    <p>guidance of our certified trainers.</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        }
                                     </div>
                                     <button class="btn bg-primary-color rounded-pill text-white fw-medium px-4 py-2 mt-3">
-                                        Get Started
-                                    </button>
+                                    @viewLocalizer["getStarted"]
+
+                                </button>
                                 </div>
                             </div>
                         </div>
@@ -203,9 +167,9 @@
                 <section class="workout">
                     <div class="container">
                         <div class="title">
-                            <h2>WORKOUTS</h2>
+                        <h2>@viewLocalizer["workoutsTitle"]</h2>
                             <p class="text-white fw-bolder fs-2 mb-4">
-                                Transform Your Body with Our Dynamic Upcoming Workouts
+                            @viewLocalizer["workoutsSubTitle"]
                             </p>
                         </div>
 
@@ -216,9 +180,9 @@
 
                                     <footer class="card-footer bg-white">
                                         <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
-                                            group workout
+                                        @viewLocalizer["groupWorkoutTitle"]
                                         </h5>
-                                        <a href="#" class="">Explore</a>
+                                    <a href="#" class="">@viewLocalizer["exploreButton"]</a>
                                     </footer>
                                 </div>
                             </div>
@@ -229,9 +193,9 @@
 
                                     <footer class="card-footer bg-white">
                                         <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
-                                            group workout
-                                        </h5>
-                                        <a href="#" class="">Explore</a>
+                                        @viewLocalizer["groupWorkoutTitle"]
+                                    </h5>
+                                    <a href="#" class="">@viewLocalizer["exploreButton"]</a>
                                     </footer>
                                 </div>
                             </div>
@@ -242,9 +206,9 @@
 
                                     <footer class="card-footer bg-white">
                                         <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
-                                            group workout
-                                        </h5>
-                                        <a href="#" class="">Explore</a>
+                                        @viewLocalizer["groupWorkoutTitle"]
+                                    </h5>
+                                    <a href="#" class="">@viewLocalizer["exploreButton"]</a>
                                     </footer>
                                 </div>
                             </div>
@@ -267,20 +231,17 @@
                                 <div>
                                     <div class="title d-flex justify-content-start align-items-start gap-2">
                                         <img class="" src="~/images/dumbbell.jpg" alt="dumbbell icon" />
-                                        <h2 class="text-primary-color fs-5">Why Us</h2>
+                                    <h2 class="text-primary-color fs-5">@viewLocalizer["whyUsTitle"]</h2>
                                     </div>
 
                                     <header>
                                         <p class="fw-bolder display-5 mb-4">
-                                            Elevate fitness with<br />
-                                            <span class="text-primary-color">the best</span> way
-                                            possible
+                                        @viewLocalizer["whyUsMainTitlePart1"]<br />
+                                        <span class="text-primary-color">@viewLocalizer["whyUsMainTitlePart2"]</span>
+                                        @viewLocalizer["whyUsMainTitlePart3"]
                                         </p>
                                         <p class="text">
-                                            We believe fitness is more than just a workout—it's a
-                                            lifestyle. With top-of- the-line facilities, certified
-                                            trainers, and a supportive community, we're here to inspire
-                                            and guide you every step of the way.
+                                        @viewLocalizer["whyUsText"]
                                         </p>
                                     </header>
 
@@ -290,40 +251,37 @@
 
                                             <div class="text">
                                                 <h3 class="text-capitalize fw-bold">
-                                                    personalized fitness plans
+                                                @viewLocalizer["personalizedPlansTitle"]
                                                 </h3>
                                                 <p class="fs-18">
-                                                    We tailor every workout to fit your unique goals and
-                                                    fitness level ensuring that you make the most progress.
+                                                @viewLocalizer["personalizedPlansText"]
                                                 </p>
                                             </div>
                                         </li>
 
                                         <li class="feature d-flex gap-4 align-items-center mb-4">
-                                            <div class="count">01</div>
+                                            <div class="count">02</div>
 
                                             <div class="text">
-                                                <h3 class="text-capitalize fw-bold">
-                                                    personalized fitness plans
-                                                </h3>
-                                                <p class="fs-18">
-                                                    We tailor every workout to fit your unique goals and
-                                                    fitness level ensuring that you make the most progress.
-                                                </p>
+                                            <h3 class="text-capitalize fw-bold">
+                                                @viewLocalizer["certifiedTrainersTitle"]
+                                            </h3>
+                                            <p class="fs-18">
+                                                @viewLocalizer["certifiedTrainersText"]
+                                            </p>
                                             </div>
                                         </li>
 
                                         <li class="feature d-flex gap-4 align-items-center">
-                                            <div class="count">01</div>
+                                            <div class="count">03</div>
 
                                             <div class="text">
-                                                <h3 class="text-capitalize fw-bold">
-                                                    personalized fitness plans
-                                                </h3>
-                                                <p class="fs-18">
-                                                    We tailor every workout to fit your unique goals and
-                                                    fitness level ensuring that you make the most progress.
-                                                </p>
+                                            <h3 class="text-capitalize fw-bold">
+                                                @viewLocalizer["flexibleSchedulesTitle"]
+                                            </h3>
+                                            <p class="fs-18">
+                                                @viewLocalizer["flexibleSchedulesText"]
+                                            </p>
                                             </div>
                                         </li>
                                     </ul>
@@ -342,11 +300,11 @@
             <footer class="mt-5">
                 <div class="bar bg-primary-color d-flex py-4 text-white fw-bolder align-items-center">
                     <p class="py-0 my-0 overflow-hidden text-nowrap">
-                        outdoor & online trainers
-                        <img src="~/images/star.svg" alt="star icon" /> personal training
-                        <img src="~/images/star.svg" alt="star icon" /> live classes
-                        <img src="~/images/star.svg" alt="star icon" /> personal trainers
-                        <img src="~/images/star.svg" alt="star icon" /> personal training
+                    @viewLocalizer["scrollingHighlight1"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight2"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight3"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight4"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight5"]
                     </p>
                 </div>
 
@@ -359,21 +317,21 @@
                                         <img src="~/images/logo.jpg" alt="our logo" />
                                     </div>
                                     <p class="fs-18 mt-2">
-                                        Push harder, go further. Your <br />
-                                        fitness journey starts today!
+                                    @viewLocalizer["footerTaglineTitle"] <br />
+                                    @viewLocalizer["footerTaglineText"]
                                     </p>
                                 </div>
                             </div>
 
                             <div class="contact">
-                                <h4 class="fw-bolder text-uppercase mb-4">contact us</h4>
+                            <h4 class="fw-bolder text-uppercase mb-4">@viewLocalizer["contactUs"]</h4>
 
                                 <ul>
                                     <li class="d-flex align-items-center gap-2">
                                         <div class="icon">
                                             <img src="~/images/phone icon.jpg" alt="phone icon" />
                                         </div>
-                                        <p>+91 123 456 789</p>
+                                    <p dir="ltr">+91 123 456 789</p>
                                     </li>
 
                                     <li class="d-flex align-items-center gap-2">
@@ -385,22 +343,21 @@
                                 </ul>
                             </div>
 
-                            <div class="time">
-                                <h4 class="fw-bolder text-uppercase mb-4">our gym timing</h4>
+                            <div class="time" style="width:300px">
+                            <h4 class="fw-bolder text-uppercase mb-4">
+                                @viewLocalizer["gymTimingTitle"]</h4>
 
                                 <p>
-                                    Mon - Fri : 08:00 AM - 10:00 PM <br />Sat - Sun : 08:00 AM -
-                                    09:00 PM
+                                @viewLocalizer["gymTiming"]
                                 </p>
                             </div>
 
                             <div class="location">
-                                <h4 class="fw-bolder text-uppercase mb-4">our location</h4>
+                            <h4 class="fw-bolder text-uppercase mb-4">@viewLocalizer["locationTitle"]</h4>
 
-                                <p>
-                                    2715 Ash Dr. San Jose, South <br />
-                                    Dakota 83475
-                                </p>
+                            <p>
+                                @viewLocalizer["locationText"]
+                            </p>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 using GymManagementDAL.Entities.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,6 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
         public string? PlanName { get; set; } = null;
         public string? MembershipStartDate { get; set; } = null;
         public string? MembershipEndDate { get; set; } = null;
+        public string? photo { get; set; } = null;
     }
 }

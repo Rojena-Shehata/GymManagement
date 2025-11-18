@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,9 +29,15 @@ namespace GymManagementDAL.Repositories.Classes
                 
         }
 
+        public IEnumerable<Session> GetAllSessionsWithTrainerAndCategory(Expression<Func<Session, bool>>  condition )
+        {
+            var session = _context.Sessions.AsNoTracking().Where(condition);
+            return session;
+        }
+
         public Session? GetSessionWithTrainerAndCategory(int sessionId)
         {
-            var session = _context.Sessions.Where(session=>session.Id == sessionId)
+            var session = _context.Sessions.AsNoTracking().Where(session=>session.Id == sessionId)
                                            .Include(s=>s.Trainer)
                                            .Include(s=>s.Category).FirstOrDefault();
             return session;

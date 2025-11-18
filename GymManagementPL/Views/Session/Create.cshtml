@@ -1,14 +1,14 @@
 ﻿@model CreateSessionViewModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Session";
 }
 
 
 
 <div class="container mt-4">
     <header class="mb-4">
-        <h3 class="text-primary-color">Create New Session</h3>
-        <p class="text-muted">Schedule a new training session</p>
+        <h3 class="text-primary-color">@viewLocalizer["createNewSession"]</h3>
+        <p class="text-muted">@viewLocalizer["createSessionSubtitle"]</p>
     </header>
     @Html.ValidationMessage("DataMissed", new { @class = "text-danger" })
     @Html.ValidationMessage("Failed", new { @class = "text-danger" })
@@ -22,53 +22,53 @@
 
                         <!-- Session Information -->
                         <div class="section-header mb-3">
-                            <h5 class="text-primary fw-bold">Session Information</h5>
+                            <h5 class="text-primary fw-bold">@viewLocalizer["sessionInformation"]</h5>
                             <hr class="mt-2">
                         </div>
 
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label asp-for="CategoryId" class="form-label fw-semibold">
-                                    Category <span class="text-danger">*</span>
+                                    @viewLocalizer["category"] <span class="text-danger">*</span>
                                 </label>
                                 <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-select">
-                                    <option value="">Select Category</option>
+                                    <option value="">@viewLocalizer["selectCategory"]</option>
                                 </select>
                                 <span asp-validation-for="CategoryId" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
                                 <label asp-for="TrainerId" class="form-label fw-semibold">
-                                    Trainer <span class="text-danger">*</span>
+                                    @viewLocalizer["theTrainer"] <span class="text-danger">*</span>
                                 </label>
                                 <select asp-for="TrainerId" asp-items="@ViewBag.Trainers" class="form-select">
-                                    <option value="">Select Trainer</option>
+                                    <option value="">@viewLocalizer["selectTrainer"]</option>
                                 </select>
                                 <span asp-validation-for="TrainerId" class="text-danger"></span>
                             </div>
 
                             <div class="col-12">
                                 <label asp-for="Description" class="form-label fw-semibold">
-                                    Description <span class="text-danger">*</span>
+                                    @viewLocalizer["description"] <span class="text-danger">*</span>
                                 </label>
                                 <textarea asp-for="Description" class="form-control" rows="3"
-                                          placeholder="Describe the session content and objectives..."></textarea>
+                                          placeholder="@viewLocalizer["descriptionPlaceholder"].Value"></textarea>
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
                                 <label asp-for="Capacity" class="form-label fw-semibold">
-                                    Capacity <span class="text-danger">*</span>
+                                    @viewLocalizer["capacity"] <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="Capacity" type="number" class="form-control" placeholder="25" min="1" max="25" />
-                                <small class="text-muted">Maximum number of participants</small>
+                                <small class="text-muted">@viewLocalizer["maxParticipants"]</small>
                                 <span asp-validation-for="Capacity" class="text-danger d-block"></span>
                             </div>
                         </div>
 
                         <!-- Date & Time -->
                         <div class="section-header mb-3">
-                            <h5 class="text-primary fw-bold">Date & Time</h5>
+                            <h5 class="text-primary fw-bold">@viewLocalizer["startDateTime"]</h5>
                             <hr class="mt-2">
                         </div>
 
@@ -83,7 +83,7 @@
 
                             <div class="col-md-6">
                                 <label asp-for="EndDate" class="form-label fw-semibold">
-                                    End Date & Time <span class="text-danger">*</span>
+                                    @viewLocalizer["endDateTime"]<span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="EndDate" type="datetime" class="form-control" />
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
@@ -92,10 +92,10 @@
 
                         <div class="d-flex justify-content-between mt-4 pt-3 border-top">
                             <a asp-action="Index" class="btn btn-outline">
-                                <i class="bi bi-arrow-left me-1"></i>Cancel
+                                <i class="bi bi-arrow-left me-1"></i>@viewLocalizer["cancel"]
                             </a>
                             <button type="submit" class="btn btn-fill">
-                                <i class="bi bi-check-lg me-1"></i>Create Session
+                                <i class="bi bi-check-lg me-1"></i>@viewLocalizer["create"]
                             </button>
                         </div>
                     </div>

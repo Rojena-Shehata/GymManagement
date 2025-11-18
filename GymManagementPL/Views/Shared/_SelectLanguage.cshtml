@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer viewLocalizer
+@inject IOptions<RequestLocalizationOptions> localizationOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+
+    var cultures = localizationOptions.Value.SupportedUICultures?
+                                          .Select(culture => new SelectListItem(culture.NativeName,culture.Name));//native name
+    //or 
+    ////////////////////////////////////// .Select(culture => new SelectListItem(culture.Name, culture.DisplayName));//not native
+    ///
+    string returnUrl; 
+    if (Context.Request.QueryString.HasValue)
+    {
+         returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString.Value}";
+
+    }
+    else
+    {
+         returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+
+    }
+    //~/ => Home
+}
+<div>
+    <form method="post" asp-controller="Account" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl">
+        <select class="form-select border-0  fw-bold bg-light text-center"
+                style="cursor:pointer;"
+                name="culture"
+                asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                asp-items="@cultures"
+                onchange="this.form.submit()">
+        </select>
+    </form>
+</div>
