@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Delete Member";
+}
+
+<h1>@viewLocalizer["deleteMember"]</h1>
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-5 shadow text-center">
+                <p class="fs-3 text-primary-color mb-4">
+                    @viewLocalizer["deleteConfirmQuestion", viewLocalizer["member"]]
+                    
+                </p>
+
+                <div class="alert alert-warning text-start" role="alert">
+                    <strong>@viewLocalizer["warning"]!</strong> @viewLocalizer["deleteActionMessage", viewLocalizer["member"]]
+                </div>
+
+                <form method="post" class="mt-4" asp-controller="Member" asp-action="DeleteConfirmed">
+                    <input readonly hidden value="@ViewBag.MembrId" name="Id"/>
+                    <div class="buttons d-flex justify-content-between gap-3">
+                        <a asp-controller="Member" asp-action="Index" class="btn-outline flex-fill">@viewLocalizer["no"]</a>
+                        <button type="submit" class="btn-fill flex-fill">@viewLocalizer["yes"]</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

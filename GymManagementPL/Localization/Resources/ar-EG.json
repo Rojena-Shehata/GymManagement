@@ -1,0 +1,389 @@
+{
+  "home": "الرئيسية",
+  "members": "الأعضاء",
+  "trainers": "المدربون",
+  "sessions": "الجلسات",
+  "plans": "الخطط",
+  "memberships": "الاشتراكات",
+  "sessionsSchedule": "جدول الجلسات",
+  "create": "إنشاء",
+  "save": "حفظ",
+  "logout": "المغادرة",
+
+  //Index View
+
+
+  "heroTitlePart1": "جسمك قادر",
+  "heroTitlePart2": "على تحمل  ",
+  "anything": "أي شيء",
+
+  "heroParagraph": "عقلك هو الذي يحتاج إلى الاقتناع. تجاوز حدودك، التزم، وشاهد كيف يتحول جسمك إلى قوة من القوة والمرونة. ابدأ رحلتك اليوم واكتشف قدراتك الحقيقية!",
+
+  "totalMembers": "إجمالي الأعضاء",
+  "activeMembers": "الأعضاء النشطون",
+  //"trainers": "المدربون",
+  "upcomingSessions": "الجلسات القادمة",
+  "ongoingSessions": "الجلسات الجارية",
+  "completedSessions": "الجلسات المكتملة",
+
+  "getStarted": "ابدأ الآن",
+  "exploreMore": "اكتشف المزيد",
+
+
+  "scrollingHighlight1": "مدربون خارجيون وعبر الإنترنت",
+  "scrollingHighlight2": "تدريب شخصي",
+  "scrollingHighlight3": "حصص مباشرة",
+  "scrollingHighlight4": "مدربون شخصيون",
+  "scrollingHighlight5": "تدريب شخصي",
+
+
+  "aboutUsTitle": "من نحن",
+  "aboutMainHeading": "نمكنك من تحقيق أهدافك الرياضية",
+  "aboutText": "نحن نؤمن أن اللياقة أكثر من مجرد تمرين، هي أسلوب حياة. مع مرافق عالية الجودة، مدربين معتمدين، ومجتمع داعم، نحن هنا لإلهامك وتوجيهك في كل خطوة.",
+
+  "personalTrainerTitle": "مدرب شخصي",
+  "personalTrainerLine1": "حقق أهدافك الرياضية مع",
+  "personalTrainerLine2": "توجيه مدربينا المعتمدين.",
+
+  "workoutsTitle": "التمارين",
+  "workoutsSubTitle": "حوّل جسمك مع تدريباتنا القادمة",
+  "groupWorkoutTitle": "تمرين جماعي",
+  "exploreButton": "اكتشف",
+
+  "whyUsTitle": "لماذا نحن",
+  "whyUsMainTitlePart1": "ارتقِ بلياقتك مع",
+  "whyUsMainTitlePart2": "أفضل",
+  "whyUsMainTitlePart3": "طريقة ممكنة",
+
+  "whyUsText": "نحن نؤمن أن اللياقة أكثر من مجرد تمرين، هي أسلوب حياة. مع مرافق عالية الجودة، مدربين معتمدين، ومجتمع داعم، نحن هنا لإلهامك وتوجيهك في كل خطوة.",
+
+  "personalizedPlansTitle": "خطط لياقة شخصية",
+  "personalizedPlansText": "نصمّم كل تمرين ليتناسب مع أهدافك ومستوى لياقتك لتحقيق أفضل تقدم.",
+
+  "certifiedTrainersTitle": "مدربون معتمدون محترفون",
+  "certifiedTrainersText": "مدربونا متخصصون وذوو خبرة لضمان التدريب الآمن والفعّال لتحقيق أهدافك.",
+
+  "flexibleSchedulesTitle": "مواعيد تدريب مرنة",
+  "flexibleSchedulesText": "نوفّر مواعيد صباحية ومسائية وعطلات نهاية الأسبوع لتناسب جدولك وتساعدك على الاستمرار.",
+
+
+  "footerTaglineTitle": "ادفع نفسك أكثر، وتقدم أبعد.",
+  "footerTaglineText": "رحلتك في اللياقة تبدأ اليوم!",
+
+
+  "contactUs": "تواصل معنا",
+  "phoneNumber": "+91 123 456 789",
+  "gymEmail": "info@gmail.com",
+  "gymTimingTitle": "مواعيد الجيم",
+
+  "gymTiming": "الاثنين-الجمعة: 08:00 ص - 10:00 م<br/>السبت-الأحد: 08:00 ص - 09:00 م",
+  "locationTitle": "موقعنا",
+
+  "locationText": "١٢٤ شارع الهرم، الجيزة، مصر",
+
+  //member index
+
+  "pageTitle": "الأعضاء",
+  "addMemberButton": "+ إضافة عضو",
+
+  "photo": "الصورة",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "gender": "الجنس",
+  "phone": "الهاتف",
+  "buildingNumber": "رقم المبنى",
+  "city": "المدينة",
+  "street": "الشارع",
+
+  "address": "العنوان",
+  "dateofBirth": "تاريخ الميلاد",
+  "membershipStartDate": "تاريخ بدء العضوية",
+  "membershipEndDate": "تاريخ انتهاء العضوية",
+
+
+  "backToList": "العودة إلى القائمة",
+  "action": "إجراء",
+  "yes": "نعم",
+  "no": "لا",
+  "member": "العضو ",
+
+
+  "deleteMember": "حذف العضو",
+  "deleteConfirmQuestion": "هل أنت متأكد أنك تريد حذف {0}؟",
+  "warning": "تنبيه",
+  "deleteActionMessage": "هذا الإجراء لا يمكن التراجع عنه. سيتم حذف جميع بيانات {0} بشكل نهائي.",
+
+
+
+  "deleted": "حذف",
+
+  "ActionSuccess": "تم {1} {0} بنجاح.",
+  "ActionError": "فشل في {1} {0}.",
+
+
+  "noActivePlans": "لا توجد خطط نشطة",
+  "male": "ذكر",
+  "female": "أنثى",
+
+  //health Record
+
+  "healthRecord": "السجل الصحي",
+  "height": "الطول",
+  "weight": "الوزن",
+  "bloodType": "فصيلة الدم",
+  "note": "ملاحظة",
+  "noNoteFound": "لا توجد ملاحظات",
+  "cm": "سم",
+  "kg": "كجم",
+
+
+
+
+  //
+
+  "dropdown.viewMember": "عرض بيانات العضو",
+  "dropdown.viewHealthRecord": "عرض سجل الصحة",
+  "dropdown.editMember": "تعديل بيانات العضو",
+  "delete": "حذف",
+  "noMembersTitle": "لا يوجد أعضاء",
+  "noMembersText": "أضف أول عضو للبدء",
+
+
+  //shared
+  "created": "إنشاء",
+
+  "updated": "تحديث",
+
+  "actionSuccess": "تم {1} {0} بنجاح.",
+  "actionError": "{فشل في {1} {0}.",
+
+  "messages.notFound": "{0} غير موجود.",
+  "messages.invalidId": "معرّف غير صالح",
+
+
+
+  "errors.dataMissing": "تحقق من البيانات غير المكتملة.",
+
+  "errors.emailOrPhoneExists": "البريد الإلكتروني أو رقم الهاتف مسجل مسبقاً.",
+
+
+
+
+
+
+  "addMember": "إضافة عضو",
+  "memberInfo": "بيانات العضو",
+  "healthData": "البيانات الصحية",
+  "personalInformation": "المعلومات الشخصية",
+  "addressInformation": "بيانات العنوان",
+  "profilePhoto": "الصورة الشخصية",
+
+  "dateOfBirth": "تاريخ الميلاد",
+  "maxFileRule": "الحد الأقصى للحجم: 5 ميجابايت. الأنواع المسموحة: JPG, PNG, JPEG (مطلوب)",
+  "selectGender": "اختر النوع",
+  "select": "اختر",
+  "add": "إضافة",
+
+
+  ////////////////////////////////Validations
+  "required": "حقل {0} مطلوب",
+
+
+  "invalidEmail": "البريد الإلكتروني غير صالح",
+  "invalidPhone": "رقم الهاتف غير صالح",
+  "stringLength": "يجب أن يكون طول {0} بين {2} و {1} حرفًا",
+  "regex": "تنسيق {0} غير صالح",
+  "maxFileSize": "أقصى حجم مسموح به هو {0} ميغابايت",
+  "nameRegex": "فقط الحروف الإنجليزية أو الحروف العربية مع المسافات مسموح بها.",
+  "stringLengthMax": "يجب ألا يزيد عدد أحرف {0} عن {1} حرفًا",
+  "regexEmail": "{0} ليس بتنسيق بريد إلكتروني صحيح. الرجاء استخدام الصيغة name@example.com.",
+  "regexStreet": "يجب أن يحتوي اسم الشارع على أحرف وأرقام ومسافات فقط.",
+  "regexPhone": "يجب أن يكون {0} رقم هاتف مصري صحيح.",
+  "range": "يجب أن يكون {0} بين {1} و {2}.",
+  "regexCity": "يجب أن يحتوي على أحرف ومسافات فقط.",
+  //trainers
+  "trainersTitle": "مدربونا",
+  "subtitle": "مدربون محترفون للياقة البدنية",
+  "addTrainer": "إضافة مدرب",
+  "theTrainer": "المدرب",
+  "trainer": "مدرب",
+
+  "noTrainers": "لا يوجد مدربون متاحون",
+  "addFirstTrainer": "أضف أول مدرب للبدء",
+  "specialization": "التخصص",
+
+  "viewDetails": "عرض التفاصيل",
+  "edit": "تعديل",
+  "editTrainerTitle": "تعديل بيانات المدرب",
+  "editTrainerSubtitle": "تحديث معلومات المدرب",
+  "editingProfileFor": "تعديل الملف الشخصي لـ",
+
+  "addNewTrainer": "إضافة مدرب جديد",
+  "professionalInfo": "المعلومات المهنية",
+  "generalFitness": "اللياقة العامة (General Fitness)",
+  "yoga": "اليوغا (Yoga)",
+  "boxing": "الملاكمة (Boxing)",
+  "crossFit": "الكروس فيت (CrossFit)",
+
+  //sessions
+  "sessionsTitle": "الجلسات التدريبية",
+  "sessionsSubtitle": "إدارة جلسات وتمارين الجيم",
+
+  "addSession": "إضافة جلسة",
+
+  "category": "الفئة",
+  "status": "الحالة",
+  "description": "الوصف",
+  "date": "التاريخ",
+  "time": "الوقت",
+  "duration": "المدة",
+  "days": "يوم",
+  "capacity": "السعة",
+  "slots": "أماكن",
+  "startTime": "وقت البداية",
+  "endTime": "وقت النهاية",
+  "hours": "ساعة",
+  "minutes": "دقيقة",
+
+  "noSessions": "لا توجد جلسات متاحة",
+  "addFirstSession": "قم بإنشاء أول جلسة تدريب لبدء الاستخدام",
+
+  "statusOngoing": "قيد التنفيذ",
+  "statusUpcoming": "قادمة",
+  "statusCompleted": "مكتملة",
+
+
+  "createNewSession": "إنشاء جلسة جديدة",
+  "createSessionSubtitle": "قم بجدولة جلسة تدريب جديدة",
+
+  "sessionInformation": "معلومات الجلسة",
+  "selectCategory": "اختر الفئة",
+  "selectTrainer": "اختر المدرب",
+  "descriptionPlaceholder": "صف محتوى وأهداف الجلسة...",
+  "maxParticipants": "الحد الأقصى لعدد المشاركين",
+
+  "dateTime": "التاريخ والوقت",
+  "startDateTime": "تاريخ ووقت البداية",
+  "endDateTime": "تاريخ ووقت النهاية",
+
+  "cancel": "إلغاء",
+
+
+  "editSession": "تعديل الجلسة",
+  "updateSessionInfo": "تحديث معلومات الجلسة",
+
+  "updateSession": "تحديث الجلسة",
+
+  "deleteSessionTitle": "حذف الجلسة",
+
+  "session": "الجلسة",
+
+  //plans
+
+  "plansIndexTitle": "خطط الاشتراك",
+  "plansIndexSubtitle": "إدارة باقات الاشتراك الخاصة بالصالة الرياضية",
+
+  "addNewPlan": "إضافة خطة جديدة",
+  "egp": "جنيه",
+
+  "activate": "تفعيل",
+  "deactivate": "إلغاء التفعيل",
+
+  "noPlansTitle": "لا توجد خطط متاحة",
+
+  "planDetailsTitle": "تفاصيل الخطة",
+
+  "active": "نشطة",
+  "inactive": "غير نشطة",
+
+
+  "addNewPlanHeader": "إضافة خطة جديدة",
+  "durationDays": "المدة (أيام)",
+  "durationDaysHint": "مثال: 30 يوم = شهر واحد",
+  "price": "السعر (جنيه)",
+  "submitCreatePlan": "إضافة الخطة",
+  "planName": "اسم الخطة",
+  "updatePlan": "تجديد الخطة",
+  "successMessagePlanStatus": "تم تغيير حالة الخطة بنجاح",
+  "errorMessagePlanStatus": "فشل تغيير حالة الخطة",
+  "plan": "الخطة",
+
+  //membership
+
+  "activeMembershipsHeader": "الاشتراكات النشطة",
+  "activeMembershipsSubtitle": "الأعضاء الذين لديهم خطط مفعّلة",
+
+  "newMembership": "اشتراك جديد",
+
+  "startDate": "تاريخ البدء",
+  "endDate": "تاريخ الانتهاء",
+  "actions": "الإجراءات",
+
+  "noActiveMembershipsTitle": "لا توجد اشتراكات نشطة",
+  "addMembershipTitle": "إضافة عضوية جديدة",
+  "selectMember": "اختر العضو",
+  "selectPlan": "اختر الخطة",
+  "membership": "العضوية",
+  "membershipCanceledSuccess": "تم إلغاء الاشتراك بنجاح",
+  "membershipCanceledError": "فشل في إلغاء الاشتراك",
+
+  "viewMembers": "عرض الأعضاء",
+
+  "BookingIndexTitle": "جلسات الأعضاء",
+  "sessionsSubtitleUpcoming": "جلسة صالحة لإدارة الحجوزات",
+  "sessionsSubtitleOngoing": "جلسة صالحة لإدارة الحضور",
+  "bookingDate": "تاريخ الحجز",
+  "attendance": "الحضور",
+  "attended": "حضر",
+  "markAsAttended": "تسجيل الحضور",
+  "sessionMembersSubtitle": "الأعضاء الذين قاموا بحجز هذه الجلسة",
+  "newBooking": "حجز جديد",
+  "sessionMembersTitle": "أعضاء الجلسة",
+  "cancelBookingConfirm": "هل أنت متأكد أنك تريد إلغاء هذا الحجز؟",
+  "noBookingsTitle": "لا توجد حجوزات",
+  "noBookingsSubtitle": "أضف أول حجز للبدء",
+  "createBookingHeader": "إنشاء حجز جديد",
+  "memberPhone": "هاتف العضو",
+  "memberPhonePlaceholder": "أدخل رقم هاتف العضو",
+  "cancelSuccess": "تم الإلغاء بنجاح",
+  "cancelError": "فشل في الإلغاء",
+  "bookingCreateSuccess": "تم إضافة الحجز الجديد بنجاح",
+  "bookingCreateError": "فشل في إضافة الحجز",
+  "attendanceStatusChangedSuccess": "تم تغيير حالة الحضور بنجاح",
+  "attendanceStatusChangedError": "فشل في تغيير حالة الحضور",
+
+
+  //Login
+  "brandName": "صالة اللياقة",
+  "brandSubtitle": "نظام إدارة الصالات الرياضية",
+
+  "loginTitle": "تسجيل دخول المشرف",
+  "loginSubtitle": "مرحبًا بك مرة أخرى! يرجى تسجيل الدخول إلى حسابك",
+
+  "emailAddress": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "rememberMe": "تذكرني لمدة 24 ساعة",
+  "loginButton": "تسجيل الدخول للوحة التحكم",
+
+  "invalidLogin": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+
+  "gymDescriptionLine1": "عقلك هو الذي يحتاج إلى الإقناع.",
+  "gymDescriptionLine2": "تجاوز حدودك، وكن ملتزمًا،",
+  "gymDescriptionLine3": "وارقب جسدك يتحول إلى قوة من القوة والمرونة.",
+  "support": "الدعم",
+  "loginNotAllowed": "حسابك غير مسموح له بتسجيل الدخول.",
+  "loginLockedOut": "تم قفل حسابك بسبب محاولات تسجيل دخول فاشلة متعددة.",
+
+  //Access Denied
+  "denied": "تم رفض ",
+  "access": "الوصول",
+  "accessDeniedMessage1": "عذرًا، ليس لديك إذن للوصول إلى هذا المورد. دور المستخدم الحالي أو حالة العضوية الخاصة بك لا تمنحك الوصول إلى هذا القسم.",
+  "accessDeniedCode": "رمز الخطأ: 403 - الوصول مرفوض",
+  "accessDeniedMessage2": "إذا كنت تعتقد أن هذا خطأ أو تحتاج إلى أذونات أعلى، يرجى الاتصال بمسؤول النظام أو مدير العضوية للحصول على المساعدة.",
+  "returnHomeButton": "العودة إلى الصفحة الرئيسية"
+
+
+
+
+
+}

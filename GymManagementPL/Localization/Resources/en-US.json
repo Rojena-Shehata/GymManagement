@@ -1,0 +1,400 @@
+{
+
+  "home": "Home",
+  "members": "Members",
+  "trainers": "Trainers",
+  "sessions": "Sessions",
+  "plans": "Plans",
+  "memberships": "Memberships",
+  "sessionsSchedule": "Sessions Schedule",
+  "create": "Create",
+  "save": "Save",
+  "logout": "Logout",
+
+
+  //Index View
+
+
+  "heroTitlePart1": "Your body can",
+  "heroTitlePart2": "stand almost",
+  "anything": "anything",
+  "heroParagraph": "It's your mind that needs convincing. Push past your limits, stay<br /> committed, and watch as your body transforms into a powerhouse of<br /> strength and resilience. Start your journey today & truly,capable of!",
+
+  "totalMembers": "Total Members",
+  "activeMembers": "Active Members",
+  //"trainers": "Trainers",
+  "upcomingSessions": "Upcoming Sessions",
+  "ongoingSessions": "Ongoing Sessions",
+  "completedSessions": "Completed Sessions",
+
+  "getStarted": "Get Started",
+  "exploreMore": "Explore More",
+
+
+  "scrollingHighlight1": "Outdoor & online trainers",
+  "scrollingHighlight2": "Personal training",
+  "scrollingHighlight3": "Live classes",
+  "scrollingHighlight4": "Personal trainers",
+  "scrollingHighlight5": "Personal training",
+
+
+  "aboutUsTitle": "About Us",
+  "aboutMainHeading": "EMPOWERING YOU TO ACHIEVE YOUR FITNESS GOALS",
+  "aboutText": "We believe fitness is more than just a workout—it's a lifestyle. With top-of-the-line facilities, certified trainers, and a supportive community, we're here to inspire and guide you every step of the way.",
+
+  "personalTrainerTitle": "Personal Trainer",
+  "personalTrainerLine1": "Achieve your fitness goals with the",
+  "personalTrainerLine2": "guidance of our certified trainers.",
+
+  "workoutsTitle": "WORKOUTS",
+  "workoutsSubTitle": "Transform Your Body with Our Dynamic Upcoming Workouts",
+  "groupWorkoutTitle": "group workout",
+  "exploreButton": "Explore",
+
+  "whyUsTitle": "Why Us",
+  "whyUsMainTitlePart1": "Elevate fitness with",
+  "whyUsMainTitlePart2": "the best",
+  "whyUsMainTitlePart3": "way possible",
+
+  "whyUsText": "We believe fitness is more than just a workout—it's a lifestyle. With top-of-the-line facilities, certified trainers, and a supportive community, we're here to inspire and guide you every step of the way.",
+
+  "personalizedPlansTitle": "personalized fitness plans",
+  "personalizedPlansText": "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
+
+  "certifiedTrainersTitle": "certified expert trainers",
+  "certifiedTrainersText": "Our trainers are certified professionals who guide you safely and effectively toward your fitness goals.",
+
+  "flexibleSchedulesTitle": "flexible training schedules",
+  "flexibleSchedulesText": "We adapt to your lifestyle with morning, evening, and weekend training options to keep you consistent.",
+
+
+
+  "footerTaglineTitle": "Push harder, go further.",
+  "footerTaglineText": "Your fitness journey starts today!",
+
+
+  "contactUs": "Contact Us",
+  "phoneNumber": "+91 123 456 789",
+  "gymEmail": "info@gmail.com",
+  "gymTimingTitle": "our gym timing",
+  "gymTiming": "Mon - Fri : 08:00 AM - 10:00 PM <br/> Sat - Sun : 08:00 AM - 09:00 PM",
+  "locationTitle": "Our Location",
+
+  "locationText": "124 El Haram St, Giza, Egypt",
+
+  //member 
+
+  "pageTitle": "Members",
+  "addMemberButton": "+ Add Member",
+  "photo": "Photo",
+  "name": "Name",
+  "email": "Email",
+  "gender": "Gender",
+  "phone": "Phone",
+  "buildingNumber": "Building Number",
+  "city": "City",
+  "street": "Street",
+
+
+  "addMember": "Add Member",
+  "memberInfo": "Member Info",
+  "healthData": "Health Data",
+  "personalInformation": "Personal Information",
+  "addressInformation": "Address Information",
+  "profilePhoto": "Profile Photo",
+  "selectGender": "Select Gender",
+
+  "dateOfBirth": "Date Of Birth",
+  "maxFileRule": "Max size: 5 MB. Allowed types: JPG, PNG, JPEG (Required)",
+
+  "height": "Height",
+  "weight": "Weight",
+  "bloodType": "Blood Type",
+  "note": "Note",
+  "backToList": "Back to List",
+  "add": "Add",
+
+
+
+  "address": "Address",
+  "dateofBirth": "Date of Birth",
+  "membershipStartDate": "Membership Start Date",
+  "membershipEndDate": "Membership End Date",
+
+  "yes": "Yes",
+  "no": "No",
+
+  "deleteMember": "Delete Member",
+  "deleteConfirmQuestion": "Are you sure you want to delete this {0}?",
+  "warning": "Warning",
+  "deleteActionMessage": "This action cannot be undone. All {0} data will be permanently deleted.",
+
+
+
+  "deleted": "deleted",
+
+
+
+
+  "action": "Action",
+  "noActivePlans": "No active plans",
+  "male": "Male",
+  "female": "Female",
+
+
+
+
+  "healthRecord": "Health Record",
+
+  "noNoteFound": "No Note found",
+
+  "cm": "cm",
+  "kg": "kg",
+
+
+
+
+  //
+
+  "dropdown.viewMember": "View Member Data",
+  "dropdown.viewHealthRecord": "View Health Record Data",
+  "dropdown.editMember": "Edit Member Data",
+  "delete": "Delete",
+  "noMembersTitle": "No Members Available",
+  "noMembersText": "Add your first Member to get started",
+
+  "member": "Member",
+  "created": "created",
+
+  "updated": "Updated",
+
+  "ActionSuccess": "{0} was {1} successfully.", //{0} who have action // {1} the action
+  "ActionError": "Failed to {1} {0}.",
+
+  "messages.notFound": "{0} is not found.",
+  "errors.dataMissing": "Check missing data.",
+  "messages.invalidId": "Invalid Id",
+
+
+
+  "errors.emailOrPhoneExists": "Email or phone number already exists.",
+
+  ////////////////////////Validations
+  "required": "{0} is required",
+
+
+  "invalidEmail": "Invalid Email Address",
+  "invalidPhone": "Invalid Phone Number",
+  "stringLength": "{0} must be between {2} and {1} characters",
+  "regex": "{0} format is invalid",
+  "maxFileSize": "Maximum file size allowed is {0} MB",
+  "nameRegex": "Only English letters or only Arabic letters with spaces are allowed.",
+  "stringLengthMax": "{0} must not exceed {1} characters",
+  "regexEmail": "{0} is not in a valid email format. Please use the format name@example.com.",
+  "regexPhone": "{0} must be a valid Egyptian phone number.",
+  "range": "{0} must be between {1} and {2}.",
+  "regexCity": "City must only contain letters and spaces.",
+  "regexStreet": "Street name must contain only letters, numbers, and spaces.",
+
+
+
+
+  //trainer
+
+
+  "trainersTitle": "Our Trainers",
+  "subtitle": "Professional fitness instructors",
+  "addTrainer": "Add Trainer",
+  "noTrainers": "No Trainers Available",
+  "addFirstTrainer": "Add your first trainer to get started",
+
+  "specialization": "Specialization",
+  "trainer": "Trainer",
+  "theTrainer": "Trainer",
+  "viewDetails": "View Details",
+  "edit": "Edit",
+  "editTrainerTitle": "Edit Trainer",
+  "editTrainerSubtitle": "Update trainer information",
+  "editingProfileFor": "Editing Profile For",
+
+  "addNewTrainer": "Add New Trainer",
+  "professionalInfo": "Professional Information",
+
+  "generalFitness": "General Fitness",
+  "yoga": "Yoga",
+  "boxing": "Boxing",
+  "crossFit": "CrossFit",
+
+
+  //sessions
+
+  "sessionsTitle": "Training Sessions",
+  "sessionsSubtitle": "Manage gym training sessions and classes",
+  "addSession": "Add Session",
+
+  "date": "Date",
+  "time": "Time",
+  "duration": "Duration",
+  "days": "days",
+  "capacity": "Capacity",
+  "slots": "slots",
+  "startTime": "Start Time",
+  "endTime": "End Time",
+  "hours": "Hours",
+  "minutes": "Minutes",
+
+
+  "description": "Description",
+
+  "noSessions": "No Sessions Available",
+  "addFirstSession": "Create your first training session to get started",
+
+  "statusOngoing": "Ongoing",
+  "statusUpcoming": "Upcoming",
+  "statusCompleted": "Completed",
+
+
+  "createNewSession": "Create New Session",
+  "createSessionSubtitle": "Schedule a new training session",
+
+  "sessionInformation": "Session Information",
+  "category": "Category",
+  "selectCategory": "Select Category",
+  "selectTrainer": "Select Trainer",
+  "descriptionPlaceholder": "Describe the session content and objectives...",
+  "maxParticipants": "Maximum number of participants",
+
+  "dateTime": "Date & Time",
+  "startDateTime": "Start Date & Time",
+  "endDateTime": "End Date & Time",
+
+  "cancel": "Cancel",
+
+  "editSession": "Edit Session",
+  "updateSessionInfo": "Update session information",
+
+  "updateSession": "Update Session",
+
+  "deleteSessionTitle": "Delete Session",
+
+  "session": "Session",
+  //plans
+
+  "plansIndexTitle": "Membership Plans",
+  "plansIndexSubtitle": "Manage your gym membership packages",
+
+  "addNewPlan": "Add New Plan",
+  "activate": "Activate",
+  "deactivate": "Deactivate",
+
+  "noPlansTitle": "No Plans Available",
+
+
+  "planDetailsTitle": "Plan Details",
+
+  "status": "Status",
+  "active": "Active",
+  "inactive": "Inactive",
+
+
+  "addNewPlanHeader": "Add new Plan",
+  "durationDays": "Duration (Days)",
+  "durationDaysHint": "e.g., 30 days = 1 month",
+  "price": "Price (EGP)",
+  "submitCreatePlan": "Add Plan",
+
+  "planName": "Plan Name",
+  "updatePlan": "Update Plan",
+
+  "successMessagePlanStatus": "Plan Status Changed Successfully",
+  "errorMessagePlanStatus": "Plan Status Failed to be Changed",
+  "plan": "Plan",
+
+  //membership
+
+  "activeMembershipsHeader": "Active Memberships",
+  "activeMembershipsSubtitle": "Members That have Active Plans",
+
+  "newMembership": "New Membership",
+
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "actions": "Actions",
+
+  "noActiveMembershipsTitle": "No Active Memberships Available",
+
+  "selectMember": "Select Member",
+  "addMembershipTitle": "Add New Membership",
+  "selectPlan": "Select Plan",
+
+  "membership": "Membership",
+
+  "membershipCanceledSuccess": "Membership Successfully Canceled",
+  "membershipCanceledError": "Membership failed to be canceled",
+  "viewMembers": "View Members",
+
+  "BookingIndexTitle": "Member Sessions",
+  "sessionsSubtitleUpcoming": "Session Valid For Manage Booking",
+  "sessionsSubtitleOngoing": "Session Valid For Manage Attendance",
+  "bookingDate": "Booking Date",
+  "attendance": "Attendance",
+  "attended": "Attended",
+  "markAsAttended": "Mark as Attended",
+  "sessionMembersSubtitle": "Members That Already Booked This Session",
+  "newBooking": "New Booking",
+  "sessionMembersTitle": "Session Members",
+  "cancelBookingConfirm": "Are you sure you want to cancel this booking?",
+
+  "noBookingsTitle": "No Bookings Available",
+  "noBookingsSubtitle": "Add your first booking to get started",
+  "createBookingHeader": "Create New Booking",
+  "memberPhone": "Member Phone",
+
+  "memberPhonePlaceholder": "Enter member phone",
+
+  "cancelSuccess": "Successfully Canceled",
+  "cancelError": "Failed to Cancel",
+
+  "bookingCreateSuccess": "New Booking Added Successfully",
+  "bookingCreateError": "Failed To Add Booking",
+
+  "attendanceStatusChangedSuccess": "Successfully Attendance Status Changed",
+  "attendanceStatusChangedError": "Failed To Change Attendance Status",
+
+  //Login
+  "brandName": "Fitness Gym",
+  "brandSubtitle": "Gym Management System",
+
+  "loginTitle": "Admin Login",
+  "loginSubtitle": "Welcome back! Please login to your account",
+
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "rememberMe": "Remember me for 24 hours",
+  "loginButton": "Login to Dashboard",
+
+  "invalidLogin": "Invalid email or password",
+
+  "gymDescriptionLine1": "It's your mind that needs convincing.",
+  "gymDescriptionLine2": "Push past your limits, stay committed,",
+  "gymDescriptionLine3": "and watch your body transform into a powerhouse of strength and resilience.",
+  "support": "Support",
+  "loginNotAllowed": "Your account is not allowed to sign in.",
+  "loginLockedOut": "Your account is locked out due to multiple failed attempts.",
+
+  //Access Denied
+  "access": "Access ",
+  "denied": "Denied",
+  "accessDeniedMessage1": "We're sorry, but you don't have permission to access this resource. Your current user role or membership status doesn't grant you access to this section.",
+  "accessDeniedCode": "Error Code: 403 - Forbidden Access",
+  "accessDeniedMessage2": "If you believe this is an error or need elevated permissions, please contact the system administrator or your membership manager for assistance.",
+  "returnHomeButton": "Return to Home"
+
+
+
+
+
+
+}
+
+

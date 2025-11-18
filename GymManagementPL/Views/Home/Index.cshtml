@@ -1,8 +1,368 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using GymManagementBLL.ViewModels.AnalyticsViewModels
+@model AnalyticsViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@inject IViewLocalizer viewLocalizer
+
+
+ <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                <div class="col-md-6 col-lg-7 col-12">
+                    <div class="info mt-4">
+                        <header class="text-black-alternative">
+                            <h2 class="fw-bolder display-2 mb-4">
+                            @viewLocalizer["heroTitlePart1"]
+
+                            <span class="text-primary-color">
+                                @viewLocalizer["heroTitlePart2"]
+                            </span> @viewLocalizer["anything"]
+                            </h2>
+
+                            <p class="mb-6">
+                            @viewLocalizer["heroParagraph"]                          
+                        </p>
+                        </header>
+                        
+                        <div class="stats-bar">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <div class="stat">
+                                        <span class="fw-bolder fs-5 d-block mb-1">@Model.TotalMembers</span>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["totalMembers"]</h3>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat">
+                                        <span class="fw-bolder fs-5 d-block mb-1">@Model.ActiveMembers</span>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["activeMembers"]</h3>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat">
+                                        <span class="fw-bolder fs-5 d-block mb-1">@Model.Trainers</span>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["trainers"]</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <div class="stat">
+                                        <span class="fw-bolder fs-5 d-block mb-1">@Model.UpcomingSessions</span>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["upcomingSessions"]</h3>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat">
+                                        <span class="fw-bolder fs-5 d-block mb-1">@Model.OngoingSessions</span>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["ongoingSessions"]</h3>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat">
+                                        <span class="fw-bolder fs-5 d-block mb-1">@Model.CompletedSessions</span>
+                                    <h3 class="fs-5 fw-normal">@viewLocalizer["completedSessions"]</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buttons my-4">
+                            <button class="get-started bg-primary-color text-white btn rounded-5 fw-medium px-3 py-2 me-5 border-2 border-primary-color">
+                            @viewLocalizer["getStarted"]
+                            </button>
+
+                            <button class="explore-more border-primary-color btn rounded-5 fw-medium px-3 py-2 border-2 text-primary-color fw-medium">
+                                @viewLocalizer["exploreMore"]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-1 offset-md-2 col-12 order-first order-md-last">
+                    <div class="character d-md-block d-flex justify-content-center">
+                        <img src="~/images/Theo Vance.jpg" alt="Theo Vance" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="bar bg-primary-color d-flex py-4 text-white fw-bolder align-items-center">
+                <p class="py-0 my-0 overflow-hidden text-nowrap">
+                @viewLocalizer["scrollingHighlight1"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight2"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight3"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight4"]
+                <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight5"]
+                </p>
+            </div>
+
+            <!-- ^ all other section -->
+            <main>
+                <!-- ^ about section -->
+                <section class="about my-5 text-black-alternative">
+                    <div class="container">
+                        <div class="row g-5 justify-content-center">
+                            <div class="col-12 col-lg-6 w-50 w-md-100">
+                                <div class="characters position-relative">
+                                    <div class="image">
+                                        <img class="" src="~/images/about p1.jpg" alt="person" />
+                                    </div>
+
+                                    <div class="image position-absolute d-none d-lg-block">
+                                        <img src="~/images/about p2.jpg" alt="person" />
+                                    </div>
+
+                                    <div class="image position-absolute d-none d-lg-block">
+                                        <img src="~/images/about p3.jpg" alt="person" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6">
+                                <div class="title d-flex justify-content-start align-items-start gap-2">
+                                    <img class="" src="~/images/dumbbell.jpg" alt="dumbbell icon" />
+                                <h2 class="text-primary-color fs-5">@viewLocalizer["aboutUsTitle"]</h2>
+                                </div>
+
+                                <header>
+                                    <p class="fw-bolder display-6 mb-4">
+                                    @viewLocalizer["aboutMainHeading"]
+                                        <span class="text-primary-color">YOUR FITNESS</span> GOALS
+                                    </p>
+                                    <p class="text">
+                                    @viewLocalizer["aboutText"]
+                                    </p>
+                                </header>
+
+                                <div class="features">
+                                    <div class="row row-cols-1 row-cols-sm-2 gx-3 gy-5">
+                                    @for(int i = 0; i < 4; i++)
+                                    {
+                                        
+                                    
+                                    <div class="feature">
+                                            <div class="inner">
+                                                <div class="title d-flex gap-2">
+                                                    <img src="~/images/feature icon.jpg" alt="icon" />
+                                                <h3 class="fw-bold">@viewLocalizer["personalTrainerTitle"]</h3>
+                                                </div>
+                                                <div class="info">
+                                                <p>@viewLocalizer["personalTrainerLine1"]</p>
+                                                <p>@viewLocalizer["personalTrainerLine2"]</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                    <button class="btn bg-primary-color rounded-pill text-white fw-medium px-4 py-2 mt-3">
+                                    @viewLocalizer["getStarted"]
+
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ^ workout section -->
+                <section class="workout">
+                    <div class="container">
+                        <div class="title">
+                        <h2>@viewLocalizer["workoutsTitle"]</h2>
+                            <p class="text-white fw-bolder fs-2 mb-4">
+                            @viewLocalizer["workoutsSubTitle"]
+                            </p>
+                        </div>
+
+                        <div class="row row-cols-md-3 row-cols-12 gy-4 gx-2 gx-md-4">
+                            <div>
+                                <div class="card">
+                                    <img src="~/images/workout 1.jpg" class="card-img-top" alt="..." />
+
+                                    <footer class="card-footer bg-white">
+                                        <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
+                                        @viewLocalizer["groupWorkoutTitle"]
+                                        </h5>
+                                    <a href="#" class="">@viewLocalizer["exploreButton"]</a>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="card">
+                                    <img src="~/images/workout 2.jpg" class="card-img-top" alt="..." />
+
+                                    <footer class="card-footer bg-white">
+                                        <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
+                                        @viewLocalizer["groupWorkoutTitle"]
+                                    </h5>
+                                    <a href="#" class="">@viewLocalizer["exploreButton"]</a>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="card">
+                                    <img src="~/images/workout 3.jpg" class="card-img-top" alt="..." />
+
+                                    <footer class="card-footer bg-white">
+                                        <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
+                                        @viewLocalizer["groupWorkoutTitle"]
+                                    </h5>
+                                    <a href="#" class="">@viewLocalizer["exploreButton"]</a>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="indicators">
+                            <div class="indicator"></div>
+                            <div class="indicator active"></div>
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ^ why-us section -->
+                <section class="why-us my-5">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-lg-2">
+                            <div class="info">
+                                <div>
+                                    <div class="title d-flex justify-content-start align-items-start gap-2">
+                                        <img class="" src="~/images/dumbbell.jpg" alt="dumbbell icon" />
+                                    <h2 class="text-primary-color fs-5">@viewLocalizer["whyUsTitle"]</h2>
+                                    </div>
+
+                                    <header>
+                                        <p class="fw-bolder display-5 mb-4">
+                                        @viewLocalizer["whyUsMainTitlePart1"]<br />
+                                        <span class="text-primary-color">@viewLocalizer["whyUsMainTitlePart2"]</span>
+                                        @viewLocalizer["whyUsMainTitlePart3"]
+                                        </p>
+                                        <p class="text">
+                                        @viewLocalizer["whyUsText"]
+                                        </p>
+                                    </header>
+
+                                    <ul class="featutes list-unstyled mt-6">
+                                        <li class="feature d-flex gap-4 align-items-center mb-4">
+                                            <div class="count">01</div>
+
+                                            <div class="text">
+                                                <h3 class="text-capitalize fw-bold">
+                                                @viewLocalizer["personalizedPlansTitle"]
+                                                </h3>
+                                                <p class="fs-18">
+                                                @viewLocalizer["personalizedPlansText"]
+                                                </p>
+                                            </div>
+                                        </li>
+
+                                        <li class="feature d-flex gap-4 align-items-center mb-4">
+                                            <div class="count">02</div>
+
+                                            <div class="text">
+                                            <h3 class="text-capitalize fw-bold">
+                                                @viewLocalizer["certifiedTrainersTitle"]
+                                            </h3>
+                                            <p class="fs-18">
+                                                @viewLocalizer["certifiedTrainersText"]
+                                            </p>
+                                            </div>
+                                        </li>
+
+                                        <li class="feature d-flex gap-4 align-items-center">
+                                            <div class="count">03</div>
+
+                                            <div class="text">
+                                            <h3 class="text-capitalize fw-bold">
+                                                @viewLocalizer["flexibleSchedulesTitle"]
+                                            </h3>
+                                            <p class="fs-18">
+                                                @viewLocalizer["flexibleSchedulesText"]
+                                            </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="characters d-none d-lg-block">
+                                <div class="images">
+                                    <img class="" src="~/images/why us images.svg" alt="characters" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer class="mt-5">
+                <div class="bar bg-primary-color d-flex py-4 text-white fw-bolder align-items-center">
+                    <p class="py-0 my-0 overflow-hidden text-nowrap">
+                    @viewLocalizer["scrollingHighlight1"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight2"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight3"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight4"]
+                    <img src="~/images/star.svg" alt="star icon" /> @viewLocalizer["scrollingHighlight5"]
+                    </p>
+                </div>
+
+                <div class="footer-content my-5">
+                    <div class="container">
+                        <div class="row row-cols-2 row-cols-md-4 g-5">
+                            <div class="logo">
+                                <div class="inner">
+                                    <div class="image">
+                                        <img src="~/images/logo.jpg" alt="our logo" />
+                                    </div>
+                                    <p class="fs-18 mt-2">
+                                    @viewLocalizer["footerTaglineTitle"] <br />
+                                    @viewLocalizer["footerTaglineText"]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact">
+                            <h4 class="fw-bolder text-uppercase mb-4">@viewLocalizer["contactUs"]</h4>
+
+                                <ul>
+                                    <li class="d-flex align-items-center gap-2">
+                                        <div class="icon">
+                                            <img src="~/images/phone icon.jpg" alt="phone icon" />
+                                        </div>
+                                    <p dir="ltr">+91 123 456 789</p>
+                                    </li>
+
+                                    <li class="d-flex align-items-center gap-2">
+                                        <div class="icon">
+                                            <img src="~/images/message icon.jpg" alt="message icon" />
+                                        </div>
+                                        <p>info@gmail.com</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="time" style="width:300px">
+                            <h4 class="fw-bolder text-uppercase mb-4">
+                                @viewLocalizer["gymTimingTitle"]</h4>
+
+                                <p>
+                                @viewLocalizer["gymTiming"]
+                                </p>
+                            </div>
+
+                            <div class="location">
+                            <h4 class="fw-bolder text-uppercase mb-4">@viewLocalizer["locationTitle"]</h4>
+
+                            <p>
+                                @viewLocalizer["locationText"]
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
