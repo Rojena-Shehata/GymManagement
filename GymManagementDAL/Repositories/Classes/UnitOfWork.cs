@@ -1,6 +1,7 @@
 ﻿using GymManagementDAL.Data.Contexts;
 using GymManagementDAL.Entities;
 using GymManagementDAL.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,5 +40,10 @@ namespace GymManagementDAL.Repositories.Classes
         public int SaveChanges()
                     =>_context.SaveChanges();
         
+        public IDbContextTransaction BeginTransaction()
+        {
+            return _context.Database.BeginTransaction();
+
+        }
     }
 }

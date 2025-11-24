@@ -57,7 +57,7 @@ namespace GymManagementPL
                 options.Password.RequiredLength = 6;//default
                 options.Password.RequireLowercase = true;//default
                 options.Password.RequireUppercase = true;//default
-
+                
                 options.User.RequireUniqueEmail = true; //default is false
                 options.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromSeconds(2);
                 options.Lockout.MaxFailedAccessAttempts = 3;
