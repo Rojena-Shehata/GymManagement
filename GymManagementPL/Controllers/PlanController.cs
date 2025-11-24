@@ -62,12 +62,12 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"].Value);
                 return RedirectToAction(nameof(Index));
             }
             if(!ModelState.IsValid )
             {
-                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"].Value);
                 return View(nameof(Edit), input);
 
             }
@@ -85,14 +85,14 @@ namespace GymManagementPL.Controllers
         {
             if(id <= 0)
             {
-                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"].Value);
                 return RedirectToAction(nameof(Index));
             }
             var IsActivated=_planService.Activate(id);
             if (IsActivated)
-                TempData["SuccessMessage"] = _stringLocalizer["successMessagePlanStatus"];
+                TempData["SuccessMessage"] = _stringLocalizer["successMessagePlanStatus"].Value;
             else
-                TempData["ErrorMessage"] = _stringLocalizer["errorMessagePlanStatus"];
+                TempData["ErrorMessage"] = _stringLocalizer["errorMessagePlanStatus"].Value;
 
             return RedirectToAction(nameof(Index));
             
