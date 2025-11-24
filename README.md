@@ -10,7 +10,7 @@ The system is built with **ASP.NET Core MVC**, uses **Entity Framework Core** fo
 ✔️ Supports Identity Roles (Admin, SuperAdmin)
 ✔️ Register new Super Admins & Admins
 ✔️ Server-side Model Validation
-✔️ Automatic Localization for Errors & UI Text based on browser language and coyld be changed (En,Ar)
+✔️ Automatic Localization for Errors & UI Text based on browser language and could be changed (En-Ar)
 ✔️ AutoMapper support for mapping large ViewModels
 ✔️ Clean Architecture separation (BLL / DAL / Controllers)
 
@@ -25,18 +25,6 @@ The system is built with **ASP.NET Core MVC**, uses **Entity Framework Core** fo
 - Support multi-language UI (English + Arabic)
 
 ---
-┌──────────────────────────┐
-│      Presentation Layer   │  → MVC (Controllers, Views, Localization)
-└───────────────▲──────────┘
-                │
-┌───────────────┴──────────┐
-│  Business Logic Layer     │  → Services, Validation, AutoMapper
-└───────────────▲──────────┘
-                │
-┌───────────────┴──────────┐
-│   Data Access Layer       │  → EF Core, Repositories, Unit of Work
-└───────────────────────────┘
-------
 
 ## 🏗️ High-Level Architecture (Three-Layer Architecture)
 
