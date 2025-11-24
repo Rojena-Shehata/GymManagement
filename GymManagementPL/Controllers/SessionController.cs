@@ -38,7 +38,7 @@ namespace GymManagementPL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"]);
+                ModelState.AddModelError("DataMissed", _stringLocalizer["errors.dataMissing"].Value);
                 LoadTrainersForDropDown();
                 LoadCategoriesForDropDown();
                 return View(nameof(Create));
@@ -88,7 +88,7 @@ namespace GymManagementPL.Controllers
             if (id <= 0)
             {
 
-                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"]);
+                TempData["ErrorMessage"] = string.Format(_stringLocalizer["messages.invalidId"].Value);
                 return RedirectToAction(nameof(Index));
             }
             if (!ModelState.IsValid)
