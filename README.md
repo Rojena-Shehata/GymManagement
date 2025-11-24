@@ -25,18 +25,6 @@ The system is built with **ASP.NET Core MVC**, uses **Entity Framework Core** fo
 - Support multi-language UI (English + Arabic)
 
 ---
-┌──────────────────────────┐
-│      Presentation Layer  │  → MVC (Controllers, Views, Localization)
-└───────────────▲──────────┘
-                │
-┌───────────────┴──────────┐
-│  Business Logic Layer    │  → Services, Validation, AutoMapper
-└───────────────▲──────────┘
-                │
-┌───────────────┴──────────┐
-│   Data Access Layer      │  → EF Core, Repositories, Unit of Work
-└──────────────────────────┘
-------
 
 ## 🏗️ High-Level Architecture (Three-Layer Architecture)
 
