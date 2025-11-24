@@ -5,14 +5,38 @@ A web-based application for managing gym operations including **member managemen
 The system is built with **ASP.NET Core MVC**, uses **Entity Framework Core** for data access, and stores data in a **SQL Server** database.
 
 ---
+📌 Features
+
+✔️ Supports Identity Roles (Admin, SuperAdmin)
+✔️ Register new Super Admins & Admins
+✔️ Server-side Model Validation
+✔️ Automatic Localization for Errors & UI Text based on browser language and coyld be changed (En,Ar)
+✔️ AutoMapper support for mapping large ViewModels
+✔️ Clean Architecture separation (BLL / DAL / Controllers)
+
+---
 
 ## 🎯 Goals
 - Centralize **Members** and **Plans** management  
 - Manage **Trainers** and **Session schedules**  
 - Improve **data consistency** and **workflow automation**  
 - Provide a scalable and maintainable architecture using **N-Tier design**
+- Enable a SuperAdmin role with full system control including Admin management
+- Support multi-language UI (English + Arabic)
 
 ---
+┌──────────────────────────┐
+│      Presentation Layer  │  → MVC (Controllers, Views, Localization)
+└───────────────▲──────────┘
+                │
+┌───────────────┴──────────┐
+│  Business Logic Layer    │  → Services, Validation, AutoMapper
+└───────────────▲──────────┘
+                │
+┌───────────────┴──────────┐
+│   Data Access Layer      │  → EF Core, Repositories, Unit of Work
+└──────────────────────────┘
+------
 
 ## 🏗️ High-Level Architecture (Three-Layer Architecture)
 
@@ -35,14 +59,16 @@ The system is built with **ASP.NET Core MVC**, uses **Entity Framework Core** fo
 
 ## ⚙️ Technology Stack
 
-| Category | Technology |
-|-----------|-------------|
-| **Backend** | ASP.NET Core MVC |
-| **ORM** | Entity Framework Core |
-| **Database** | Microsoft SQL Server |
-| **Frontend** | Razor Views, Bootstrap, Custom CSS |
-| **Patterns** | Repository Pattern, Unit of Work, Dependency Injection |
-| **Libraries & Tools** | AutoMapper → For object-to-object mapping between ViewModels and Entities |
+| Category                   | Technology                                             |
+| -------------------------- | ------------------------------------------------------ |
+| **Backend**                | ASP.NET Core MVC                                       |
+| **ORM**                    | Entity Framework Core                                  |
+| **Database**               | Microsoft SQL Server                                   |
+| **Frontend**               | Razor Views, Bootstrap, Custom CSS                     |
+| **Localization**           | JSON resource files (`en-US.json`, `ar-EG.json`)       |
+| **Authentication / Roles** | ASP.NET Core Identity ( Admin, SuperAdmin)             |
+| **Patterns**               | Repository Pattern, Unit of Work, Dependency Injection |
+| **Mapping**                | AutoMapper                                             |
 
 ---
 
@@ -66,6 +92,8 @@ Enhances modularity and testability by injecting dependencies like repositories 
 - **Entity Framework Core**
 - **SQL Server**
 - **Bootstrap / HTML / CSS**
+- Localization
+- ASP.NET Identity roles
 
 ---
 
@@ -75,5 +103,7 @@ Enhances modularity and testability by injecting dependencies like repositories 
 - Repository + Unit of Work for clean data access
 - Separation of concerns for maintainability
 - Simple and intuitive web interface
+- Localization (EN/AR): Automatic culture switching + JSON-based translations.
+- Identity Roles: (SuperAdmin / Admin)
 
 ---
