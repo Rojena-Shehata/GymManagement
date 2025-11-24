@@ -388,12 +388,29 @@
   "accessDeniedMessage1": "We're sorry, but you don't have permission to access this resource. Your current user role or membership status doesn't grant you access to this section.",
   "accessDeniedCode": "Error Code: 403 - Forbidden Access",
   "accessDeniedMessage2": "If you believe this is an error or need elevated permissions, please contact the system administrator or your membership manager for assistance.",
-  "returnHomeButton": "Return to Home"
+  "returnHomeButton": "Return to Home",
+
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "passwordMinLength": "Password must be at least 6 characters long.",
+  "PasswordUpperLower": "Password must contain at least one uppercase and one lowercase letter.",
+  "PasswordNotMatch": "Passwords do not match.",
+  "confirmPassword": "Confirm Password",
+  "onlyENLetters": "Only English letters are allowed for the name.",
 
 
+  "Admin": "Admin (Basic Management Access)",
+  "SuperAdmin": "Super Admin (Full System Access)",
+  "role": "User Role",
+  "selectRole": "Select Role",
+  "whoHaveAccess": "Admins who have access to the system",
+  "addNewAdmin": "Add New Admin",
+  "noAdminsTitle": "No Admins Available",
+  "admins": "Admins",
+  "theAdmin": "Admins",
+  "createNewAdmin": "Create New Admin",
 
-
-
+  "cancelAdminConfirm": "Are you sure you want to Remove this admin?"
 
 }
 

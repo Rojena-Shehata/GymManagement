@@ -76,18 +76,46 @@
                         <li class="nav-item">
                             <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5  @(CurrentController == "Booking" ? "active" : "")" aria-current="page" asp-controller="Booking" asp-action="index">@viewLocalizer["sessionsSchedule"]</a>
                         </li>
+                        @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <div class="dropdown" >
+
+                        <button class="btn btn-link p-0 border-0" type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <img src="~/images/action dots.jpg" alt="action icon" />
+                        </button>
+                            <ul class="dropdown-menu dropdown-menu-start">
+
                         <li class="nav-item">
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5 text-center  @(CurrentController == "Account" ? "active" : "")" aria-current="page" asp-controller="Account" asp-action="index">@viewLocalizer["admins"]</a>
+                        </li>
+
+                                <li class="nav-item">
+                                    <a asp-controller="Account" asp-action="Logout"
+                                       class="nav-link btn @(CurrentController == "Account" ? "btn-danger" : "btn-outline-danger")
+                                    rounded-pill px-3 py-2  mx-2  logout-link">
+                                        <i class="bi bi-box-arrow-right me-2"></i> @viewLocalizer["logout"]
+                                    </a>
+                                </li>
+                            </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                
+                            
+                            <li class="nav-item">
                             <a asp-controller="Account" asp-action="Logout"
                                class="nav-link btn @(CurrentController == "Account" ? "btn-danger" : "btn-outline-danger")
                                     rounded-pill px-3 py-2  mx-2  logout-link">
                                 <i class="bi bi-box-arrow-right me-2"></i> @viewLocalizer["logout"]
                             </a>
                         </li>
-                        @* <li class="nav-item">
+                        }
+                         @*<li class="nav-item m-0">
 
-                          @*   <div class="m-3">
                                 <partial name="_SelectLanguage" />
-                            </div> 
                         </li> *@
                     </ul>
 
@@ -96,7 +124,7 @@
 
             </div>
 
-            <div class="m-3">
+           <div class="m-3">
                 <partial name="_SelectLanguage" />
             </div>
         </nav>
