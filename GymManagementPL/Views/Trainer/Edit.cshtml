@@ -74,36 +74,17 @@
                                 </label>
                                 
                 <div class="form-check">
-                    @foreach(var specialty in Enum.GetValues<Specialties>())
-                        {
-                        <div class="form-check">
 
-                        <input  asp-for="Specialization" class="form-check-input" type="radio"
-                               value="@specialty" />
-                        <label asp-for="Specialization" class="form-check-label">@specialty</label>
-                        </div>
-                        }
+                                    @foreach (var item in Html.GetEnumSelectList<Specialties>())
+                                    {
+                                        <div class="form-check">
 
-                                @* <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="Specialties"
-                                           value="GeneralFitness" />
-                                    <label class="form-check-label">GeneralFitness</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="Specialties"
-                                           value="Yoga" />
-                                    <label class="form-check-label">Yoga</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="Specialties"
-                                           value="Boxing" />
-                                    <label class="form-check-label">Boxing</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="Specialties"
-                                           value="CrossFit" />
-                                    <label class="form-check-label">CrossFit</label>
-                                </div> *@
+                                            <input name="Specialization"  class="form-check-input" type="radio"
+                                                   value="@item.Value" 
+                                                   @(item.Value == ((int)Model.Specialization).ToString() ? "checked='checked'" : "") />
+                                            <label asp-for="Specialization" class="form-check-label">@item.Text</label>
+                                        </div>
+                                    }
                             </div>
                         </div>
 

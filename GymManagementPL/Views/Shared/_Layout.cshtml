@@ -53,13 +53,14 @@
                         <li class="nav-item">
                             <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5  @(CurrentController == "Home" ? "active" : "")" aria-current="page" asp-controller="Home" asp-action="index">@viewLocalizer["home"]</a>
                         </li>
-                            @if (User.IsInRole("SuperAdmin"))
-                            {
 
 
                                 <li class="nav-item">
                                 <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5   @(CurrentController == "Member" ? "active" : "")" aria-current="page" asp-controller="Member" asp-action="index">@viewLocalizer["members"]</a>
                                 </li>
+
+                            @if (User.IsInRole("SuperAdmin"))
+                            {
                                 <li class="nav-item">
                                 <a class="nav-link   px-3 py-2 mx-2 fw-bolder fs-5  @(CurrentController == "Trainer" ? "active" : "")" aria-current="page" asp-action="index" asp-controller="Trainer">@viewLocalizer["trainers"]</a>
                                 </li>
@@ -73,8 +74,8 @@
                         <li class="nav-item">
                             <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5 @(CurrentController == "Membership" ? "active" : "")" aria-current="page" asp-controller="Membership" asp-action="index">@viewLocalizer["memberships"]</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5  @(CurrentController == "Booking" ? "active" : "")" aria-current="page" asp-controller="Booking" asp-action="index">@viewLocalizer["sessionsSchedule"]</a>
+                        <li class="nav-item ">
+                            <a class="nav-link  px-1 py-2 mx-2 fw-bolder text-center fs-5  @(CurrentController == "Booking" ? "active" : "")" aria-current="page" asp-controller="Booking" asp-action="index">@viewLocalizer["sessionsSchedule"]</a>
                         </li>
                         @if (User.IsInRole("SuperAdmin"))
                     {
@@ -113,10 +114,10 @@
                             </a>
                         </li>
                         }
-                         @*<li class="nav-item m-0">
+                        <li class="nav-item px-3 py-2  mx-2">
 
                                 <partial name="_SelectLanguage" />
-                        </li> *@
+                        </li>
                     </ul>
 
 
@@ -124,9 +125,6 @@
 
             </div>
 
-           <div class="m-3">
-                <partial name="_SelectLanguage" />
-            </div>
         </nav>
 
     </header>
