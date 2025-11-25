@@ -68,7 +68,7 @@ namespace GymManagementBLL.Services.Classes
                 Name = x.Name,
                 Email = x.Email,
                 Phone = x.Phone,
-                Specialization=x.Specialties.ToString(),              
+                Specialization=x.Specialties,              
             });
 
              return trainerViewModel;
@@ -86,7 +86,7 @@ namespace GymManagementBLL.Services.Classes
                 Name = trainer.Name,
                 Email = trainer.Email,
                 Phone = trainer.Phone,
-                Specialization = trainer.Specialties.ToString(),
+                Specialization = trainer.Specialties,
                 Address=FormatedAddress(trainer.Address),
                 DateOfBirth =trainer.DateOfBirth.ToShortDateString(),
             };
