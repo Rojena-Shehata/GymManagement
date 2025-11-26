@@ -104,7 +104,7 @@ namespace GymManagementPL
 
             var app = builder.Build();
 
-            #region Data Seeding
+            #region Data Seeding & Migrate Pending Migrations
             //UnManaged Resources
 
             using var scope= app.Services.CreateScope();
@@ -115,6 +115,11 @@ namespace GymManagementPL
 
             GymDataSeeding.SeedData(gymDbContext);
             await  IdentityDataSeeding.SeedData(roleManager, userManager);
+
+            var pendingMigrations = await gymDbContext.Database.GetPendingMigrationsAsync();
+            if (pendingMigrations.Any())
+                await gymDbContext.Database.MigrateAsync();
+
             #endregion
 
             // Configure the HTTP request pipeline.
@@ -124,7 +129,7 @@ namespace GymManagementPL
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseRouting();
 
