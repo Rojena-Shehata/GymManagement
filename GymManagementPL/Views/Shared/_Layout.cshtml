@@ -89,7 +89,12 @@
                             <ul class="dropdown-menu dropdown-menu-start">
 
                         <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5 text-center  @(CurrentController == "Account" ? "active" : "")" aria-current="page" asp-controller="Account" asp-action="index">@viewLocalizer["admins"]</a>
+                                        <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-6 text-center " aria-current="page" asp-controller="Account" asp-action="index">@viewLocalizer["admins"]</a>
+                        </li>
+                        <li class="nav-item">
+                                        <a class="nav-link  px-1 py-1 mx-2 fw-bolder fs-6 text-center " aria-current="page" asp-controller="Account" asp-action="Register">
+                                            + @viewLocalizer["addNewAdmin"]
+                                        </a>
                         </li>
 
                                 <li class="nav-item">
